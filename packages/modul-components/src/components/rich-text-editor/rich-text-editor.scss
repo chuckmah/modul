@@ -1,0 +1,17 @@
+@import 'commons';
+
+.m-rich-text {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+
+    &.m--has-validation-message {
+        .m-rich-text__validation-message {
+            margin-top: $m-spacing--xs;
+        }
+    }
+
+    &__validation-message {
+        transition: margin-top $m-transition-duration ease;
+    }
+}
