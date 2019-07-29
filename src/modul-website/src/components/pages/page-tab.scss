@@ -1,0 +1,10 @@
+@import '../../styles/commons';
+
+.modul-page-tab {
+    > :first-child {
+        &,
+        > :first-child {
+            margin-top: 0;
+        }
+    }
+}

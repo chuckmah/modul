@@ -1,0 +1,36 @@
+<div class="modul-component-properties">
+    <m-message v-if="!hasAttributes" skin="light" state="information">
+        <m-i18n k="modul:no-properties"></m-i18n>
+    </m-message>
+    <table v-else class="m-u--table">
+        <thead>
+            <th>
+                <m-i18n k="modul:attribute"></m-i18n>
+            </th>
+            <th style="text-align: center;">
+                <m-i18n k="modul:value"></m-i18n>
+            </th>
+
+            <th style="text-align: center;">
+                <m-i18n k="modul:description"></m-i18n>
+            </th>
+        </thead>
+        <tbody>
+            <tr v-for="attribute in attributes">
+                <td>
+                    <strong>{{attribute.name}}</strong>:{{attribute.type}}
+                    <p v-if="attribute.origin" class="modul-component-properties__origin-attibute">({{attribute.origin.tag}})</p>
+                </td>
+                <td style="text-align: center;">
+
+                    <span v-html="getValues(attribute)"></span>
+                    <span v-if="attribute.defaultValue" class="modul-component-properties__origin-attibute"><br/><m-i18n k="modul:defaut"></m-i18n> : {{attribute.defaultValue}}</span>
+                </td>
+                <td>
+                    <m-i18n v-if="showDescription" :k="attribute.description"></m-i18n>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

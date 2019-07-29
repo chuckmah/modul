@@ -21,6 +21,7 @@
         "lint:ci": "lerna run --stream --sort lint",
         "storybook": "lerna run storybook  --scope @ulaval/modul-components --stream",
         "storybook:openshift": "lerna run storybook:openshift --scope @ulaval/modul-components --stream",
+        "website": "lerna run dev --scope @ulaval/modul-website --stream",
         "test": "lerna run --stream --sort test",
         "test:update": "lerna run --stream --sort test:update",
         "print_version_win": "echo %npm_package_version%",

@@ -1,0 +1,23 @@
+@import '../../styles/commons';
+
+.modul-component-properties {
+    padding: $m-padding $m-padding $m-padding--l $m-padding;
+
+    &__origin-attibute {
+        font-style: italic;
+        font-size: $m-font-size--s;
+        color: $modul-color--grey-darker;
+        margin-top: $m-margin--xs;
+    }
+
+    @media (min-width: $m-mq--min--s) {
+        padding: $m-margin--l $m-margin--l $m-padding--l $m-margin--l;
+    }
+
+    > :first-child {
+        &,
+        > :first-child {
+            margin-top: 0;
+        }
+    }
+}

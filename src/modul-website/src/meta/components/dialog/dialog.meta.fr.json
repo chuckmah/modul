@@ -1,0 +1,10 @@
+{
+    "m-dialog-meta": {
+        "website-name": "Fenêtre de dialogue",
+        "title": "Titre de la fenêtre de dialogue",
+        "message": "Message de la fenêtre de dialogue",
+        "okLabel": "Texte du champs ok",
+        "cancelLabel": "Texte du champs cancel",
+        "negativeLink": "Afficher ou non le bouton d'abandon"
+    }
+}

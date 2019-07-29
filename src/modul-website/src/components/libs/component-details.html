@@ -1,0 +1,59 @@
+<div class="modul-component-details">
+    <div class="modul-component" v-if="component">
+        <header class="modul-component-details__header" :class="{ 'm--has-no-preview': !component.preview }">
+            <h2 class="modul-component-details__title">
+                <m-icon name="m-svg__chevron--left" class="modul-component-details__title__arrow"></m-icon>{{component.tag}}
+                <m-icon name="m-svg__chevron--right" class="modul-component-details__title__arrow"></m-icon>
+                <span v-if="!isProduction(component.status)" class="modul-logo__beta modul-component-details__title__beta-tag">
+                    {{component.status }}
+                </span>
+            </h2>
+            <button @click="toggleOpenCodePreview" v-if="component.preview" class="modul-component-details__title__button">{{openCloseLabel}}
+            </button>
+        </header>
+        <m-accordion-transition>
+            <div v-if="codePreviewOpen && component.preview">
+                <div class="modul-component-details__code">
+                    <modul-highlight :template="markdownPreview"></modul-highlight>
+                </div>
+            </div>
+        </m-accordion-transition>
+        <div class="modul-component-details__preview">
+            <span v-if="!component.preview">
+                <m-message skin="light" state="information">
+                    <m-i18n k="modul:preview-not-available"></m-i18n>
+                </m-message>
+            </span>
+            <span v-else>
+                <m-markdown :template="markdownPreview"></m-markdown>
+            </span>
+        </div>
+
+        <div class="modul-u--navbar">
+            <m-navbar skin="tab-arrow" :arrow-mobile="false" :selected="currentTab" :auto-select="true">
+                <m-navbar-item value="overview">
+                    <router-link :to="overview" class="modul-u--navbar__item">
+                        <m-i18n k="modul:overview"></m-i18n>
+                    </router-link>
+                </m-navbar-item>
+                <m-navbar-item value="properties">
+                    <router-link :to="properties" class="modul-u--navbar__item">
+                        <m-i18n k="modul:attributes"></m-i18n>
+                    </router-link>
+                </m-navbar-item>
+                <m-navbar-item value="slots">
+                    <router-link :to="slots" class="modul-u--navbar__item">
+                        <m-i18n k="modul:slots"></m-i18n>
+                    </router-link>
+                </m-navbar-item>
+                <m-navbar-item value="events">
+                    <router-link :to="events" class="modul-u--navbar__item">
+                        <m-i18n k="modul:events"></m-i18n>
+                    </router-link>
+                </m-navbar-item>
+            </m-navbar>
+        </div>
+        <router-view></router-view>
+
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{
+    "m-textfield-meta": {
+        "website-name": "Champ de saisie",
+        "type": "Type de champ de saisie",
+        "passwordIcon": "Afficher ou non l'icône de mot de passe"
+    }
+}
