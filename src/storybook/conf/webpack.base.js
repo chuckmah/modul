@@ -13,7 +13,7 @@ module.exports = function (isLib) {
             extensions: ['.js', '.ts', '.html'],
             alias: {
                 'vue$': 'vue/dist/vue.esm.js',
-                '@packages/modul-components': resolve("../../packages/modul-components/src")
+                '@ulaval/modul-components/dist/': resolve("../../packages/modul-components/src")
             }
         },
         module: {
