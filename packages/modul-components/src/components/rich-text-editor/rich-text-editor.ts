@@ -10,6 +10,7 @@ import { InputState, InputStateInputSelector } from '../../mixins/input-state/in
 import { InputWidth } from '../../mixins/input-width/input-width';
 import { MFile } from '../../utils/file/file';
 import { FormatMode } from '../../utils/i18n/i18n';
+import LicensePlugin from '../../utils/license/license';
 import uuid from '../../utils/uuid/uuid';
 import { ModulVue } from '../../utils/vue/vue';
 import { RICH_TEXT_EDITOR_NAME } from '../component-names';
@@ -251,6 +252,7 @@ const RichTextEditorPlugin: PluginObject<any> = {
         v.use(FileUploadPlugin);
         v.use(InputStylePlugin);
         v.use(ValidationMessagePlugin);
+        v.use(LicensePlugin);
         v.component(RICH_TEXT_EDITOR_NAME, MRichTextEditor);
     }
 };

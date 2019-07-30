@@ -1,7 +1,7 @@
 import Vue, { PluginObject } from 'vue';
 
 // this create a webpack context of all required file that end with sandbox.ts
-export const sandboxRequiredContext: any = require.context('../../../../packages', true, /\.sandbox.ts$/);
+export const sandboxRequiredContext: any = require.context('../../src', true, /\.sandbox.ts$/);
 
 export function getSandboxesNames(): string[] {
     return sandboxRequiredContext.keys().map((filename) => {

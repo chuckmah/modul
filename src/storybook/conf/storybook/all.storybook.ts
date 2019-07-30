@@ -1,5 +1,5 @@
 export const loadStories: any = () => {
-    const req: any = require.context('../../../../packages', true, /\.stories\.ts$/);
+    const req: any = require.context('../../src', true, /\.stories\.ts$/);
     req.keys().forEach(filename => req(filename));
 };
 

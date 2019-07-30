@@ -15,6 +15,7 @@ export class RichTextLicensePlugin implements PluginObject<RichTextLicensePlugin
         v.use(LicensePlugin);
         v.use(InputStylePlugin);
         v.use(ValidationMessagePlugin);
+
         if (options.key) {
             (v.prototype as ModulVue).$license.addLicense(RICH_TEXT_LICENSE_KEY, options.key);
         }

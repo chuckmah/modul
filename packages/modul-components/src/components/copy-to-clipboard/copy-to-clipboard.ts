@@ -3,6 +3,7 @@ import { PluginObject } from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import { InputMaxWidth } from '../../mixins/input-width/input-width';
 import { InputSelectable } from '../../utils/input/input';
+import ToastServicePlugin from '../../utils/toast/toast-service.plugin';
 import { ModulVue } from '../../utils/vue/vue';
 import { COPY_TO_CLIPBOARD_FEEDBACK_NAME, COPY_TO_CLIPBOARD_NAME } from '../component-names';
 import I18nPlugin from '../i18n/i18n';
@@ -98,6 +99,7 @@ const CopyToClipboardPlugin: PluginObject<any> = {
         v.use(LinkPlugin);
         v.use(I18nPlugin);
         v.use(TextfieldPlugin);
+        v.use(ToastServicePlugin);
         v.use(ToastPlugin);
     }
 };

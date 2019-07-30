@@ -1,27 +1,57 @@
 import { storiesOf } from '@storybook/vue';
+import AutoCompletePlugin from '@ulaval/modul-components/dist/components/autocomplete/autocomplete';
+import ButtonPlugin from '@ulaval/modul-components/dist/components/button/button';
+import CheckboxPlugin from '@ulaval/modul-components/dist/components/checkbox/checkbox';
+import DatepickerPlugin from '@ulaval/modul-components/dist/components/datepicker/datepicker';
+import DaterangepickerPlugin from '@ulaval/modul-components/dist/components/daterangepicker/daterangepicker';
+import DecimalfieldPlugin from '@ulaval/modul-components/dist/components/decimalfield/decimalfield';
+import DropdownPlugin from '@ulaval/modul-components/dist/components/dropdown/dropdown';
+import IntegerfieldPlugin from '@ulaval/modul-components/dist/components/integerfield/integerfield';
+import MoneyFieldPlugin from '@ulaval/modul-components/dist/components/moneyfield/moneyfield';
+import RadioGroupPlugin from '@ulaval/modul-components/dist/components/radio-group/radio-group';
+import SwitchPlugin from '@ulaval/modul-components/dist/components/switch/switch';
+import TextareaPlugin from '@ulaval/modul-components/dist/components/textarea/textarea';
+import TextfieldPlugin from '@ulaval/modul-components/dist/components/textfield/textfield';
+import TimepickerPlugin from '@ulaval/modul-components/dist/components/timepicker/timepicker';
+import { ClearErrorToast, ClearSummaryMessage, ErrorToast, FocusOnFirstError, SummaryMessage } from '@ulaval/modul-form/dist/components/form/fallouts/built-in-form-action-fallouts';
+import FormPlugin, { FORM_NAME } from '@ulaval/modul-form/dist/index';
+import { ControlValidatorValidationType } from '@ulaval/modul-form/dist/utils/form/control-validator-validation-type';
+import { FormArray } from '@ulaval/modul-form/dist/utils/form/form-array';
+import { FormControl } from '@ulaval/modul-form/dist/utils/form/form-control';
+import { FormGroup } from '@ulaval/modul-form/dist/utils/form/form-group';
+import { BetweenValidator } from '@ulaval/modul-form/dist/utils/form/validators/between/between';
+import { CompareValidator } from '@ulaval/modul-form/dist/utils/form/validators/compare/compare';
+import { DateBetweenValidator } from '@ulaval/modul-form/dist/utils/form/validators/date-between/date-between';
+import { DateFormatValidator } from '@ulaval/modul-form/dist/utils/form/validators/date-format/date-format';
+import { EmailValidator } from '@ulaval/modul-form/dist/utils/form/validators/email/email';
+import { MaxLengthValidator } from '@ulaval/modul-form/dist/utils/form/validators/max-length/max-length';
+import { MaxValidator } from '@ulaval/modul-form/dist/utils/form/validators/max/max';
+import { MinLengthValidator } from '@ulaval/modul-form/dist/utils/form/validators/min-length/min-length';
+import { MinValidator } from '@ulaval/modul-form/dist/utils/form/validators/min/min';
+import { RequiredValidator } from '@ulaval/modul-form/dist/utils/form/validators/required/required';
 import Vue from 'vue';
-import FormPlugin, { FORM_NAME } from '../..';
-import { ControlValidatorValidationType } from '../../utils/form/control-validator-validation-type';
-import { FormArray } from '../../utils/form/form-array';
-import { FormControl } from '../../utils/form/form-control';
-import { FormGroup } from '../../utils/form/form-group';
-import { BetweenValidator } from '../../utils/form/validators/between/between';
-import { CompareValidator } from '../../utils/form/validators/compare/compare';
-import { DateBetweenValidator } from '../../utils/form/validators/date-between/date-between';
-import { DateFormatValidator } from '../../utils/form/validators/date-format/date-format';
-import { EmailValidator } from '../../utils/form/validators/email/email';
-import { MaxLengthValidator } from '../../utils/form/validators/max-length/max-length';
-import { MaxValidator } from '../../utils/form/validators/max/max';
-import { MinLengthValidator } from '../../utils/form/validators/min-length/min-length';
-import { MinValidator } from '../../utils/form/validators/min/min';
-import { RequiredValidator } from '../../utils/form/validators/required/required';
-import { ClearErrorToast, ClearSummaryMessage, ErrorToast, FocusOnFirstError, SummaryMessage } from './fallouts/built-in-form-action-fallouts';
 
 
-export const componentsHierarchyRootSeparator: string = 'form|';
 
+
+
+Vue.use(ButtonPlugin);
+Vue.use(TextfieldPlugin);
 Vue.use(FormPlugin);
+Vue.use(AutoCompletePlugin);
+Vue.use(CheckboxPlugin);
+Vue.use(DatepickerPlugin);
+Vue.use(DaterangepickerPlugin);
+Vue.use(DecimalfieldPlugin);
+Vue.use(TextareaPlugin);
+Vue.use(RadioGroupPlugin);
+Vue.use(IntegerfieldPlugin);
+Vue.use(TimepickerPlugin);
+Vue.use(SwitchPlugin);
+Vue.use(MoneyFieldPlugin);
+Vue.use(DropdownPlugin);
 
+export const componentsHierarchyRootSeparator: string = 'modul-form|';
 
 
 const ROLE_NAMES: string[] = ['Sys admin', 'Unit admin', 'Conceptor', 'Assitant', 'Moderator', 'Student', 'Invited'];

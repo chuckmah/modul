@@ -1,6 +1,7 @@
 import I18nPlugin from '@ulaval/modul-components/dist/components/i18n/i18n';
 import MessagePlugin from '@ulaval/modul-components/dist/components/message/message';
 import ToastPlugin from '@ulaval/modul-components/dist/components/toast/toast';
+import AccordionTransitionPlugin from '@ulaval/modul-components/dist/components/transitions/accordion-transition/accordion-transition';
 import { FRENCH, Messages } from '@ulaval/modul-components/dist/utils/i18n/i18n';
 import ScrollToPlugin from '@ulaval/modul-components/dist/utils/scroll-to/scroll-to';
 import ToastServicePlugin from '@ulaval/modul-components/dist/utils/toast/toast-service.plugin';
@@ -34,6 +35,7 @@ export const FormPlugin: PluginObject<any> = {
             i18n.addMessages(FRENCH, require('./components/form/form.lang.fr.json'));
         }
 
+        v.use(AccordionTransitionPlugin);
         v.use(MessagePlugin);
         v.use(ToastPlugin);
         v.use(ToastServicePlugin);

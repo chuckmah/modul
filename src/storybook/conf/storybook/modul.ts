@@ -8,6 +8,7 @@ import Vue, { PluginObject } from 'vue';
 import './styles/storybook.scss';
 
 
+
 export const ModulPlugin: PluginObject<any> = {
     install(v, options): void {
 
@@ -23,5 +24,9 @@ export const ModulPlugin: PluginObject<any> = {
         Vue.use(UtilsPlugin, utilsOptions);
         Vue.use(FrenchPlugin);
         Vue.use(DefaultSpritesPlugin);
+
+
+
+
     }
 };

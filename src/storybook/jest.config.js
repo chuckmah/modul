@@ -28,6 +28,7 @@ module.exports = {
         "\\.(css|less|sass|scss)$": "<rootDir>/tests/jest/jest-ignore.js",
         "\\.min\\.(css|less|sass|scss)|\\.svg$": "<rootDir>/tests/jest/jest-ignore.js",
         "@ulaval/modul-components/dist/(.*)": "<rootDir>/../../packages/modul-components/src/$1",
+        "@ulaval/modul-form/dist/(.*)": "<rootDir>/../../packages/modul-form/src/$1"
     },
     snapshotSerializers: [
         "<rootDir>../../node_modules/jest-serializer-vue"

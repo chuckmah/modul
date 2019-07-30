@@ -17,6 +17,9 @@
             "@ulaval/modul-components/dist/*": [
                 "../../packages/modul-components/src/*"
             ],
+            "@ulaval/modul-form/dist/*": [
+                "../../packages/modul-form/src/*"
+            ],
         },
         "types": [
             "node",
