@@ -5,10 +5,10 @@
     "author": "Charles Maheu <charles.maheu@dti.ulaval.ca>",
     "private": true,
     "scripts": {
-        "storybook": "start-storybook --config-dir ./conf/storybook --port 8082 --static-dir ./conf/storybook/public --debug-webpack ",
+        "storybook": "start-storybook --config-dir ./conf/storybook --port 8082 --static-dir ./conf/storybook/public",
         "storybook:openshift": "start-storybook --ci --port 8080 --config-dir ./conf/storybook --static-dir ./conf/storybook/public",
         "test:ci": "jest -w 1 --ci --silent --config ./conf/storybook/jest.config.storybook.js --verbose",
-        "test": "jest --config ./conf/storybook/jest.config.storybook.js --verbose",
+        "test": "jest --config ./conf/storybook/jest.config.storybook.js --verbose --silent",
         "test:update": "jest --config ./conf/storybook/jest.config.storybook.js --verbose --updateSnapshot"
     },
     "dependencies": {
