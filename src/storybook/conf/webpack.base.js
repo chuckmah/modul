@@ -1,7 +1,6 @@
 
 const path = require('path');
 const ContextReplacementPlugin = require("webpack/lib/ContextReplacementPlugin");
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
@@ -13,9 +12,9 @@ module.exports = function (isLib) {
         resolve: {
             extensions: ['.js', '.ts', '.html'],
             alias: {
-                'vue$': 'vue/dist/vue.esm.js'
-            },
-            plugins: [new TsconfigPathsPlugin({ configFile: resolve('tsconfig.json') })]
+                'vue$': 'vue/dist/vue.esm.js',
+                '@ulaval/modul-components/dist': resolve("../../packages/modul-components/src")
+            }
         },
         module: {
             rules: [
@@ -71,7 +70,7 @@ module.exports = function (isLib) {
                         {
                             loader: 'ts-loader',
                             options: {
-                                configFile: resolve('tsconfig.json'),
+                                configFile: resolve('tsconfig.json')
                             }
                         }
                     ]

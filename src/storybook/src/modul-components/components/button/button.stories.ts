@@ -1,8 +1,8 @@
-import ButtonPlugin from '@chuckmah/modul-components/dist/components/button/button';
-import { BUTTON_NAME } from '@chuckmah/modul-components/dist/components/component-names';
 import { actions } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/vue';
+import ButtonPlugin from '@ulaval/modul-components/dist/components/button/button';
+import { BUTTON_NAME } from '@ulaval/modul-components/dist/components/component-names';
 import Vue from 'vue';
 import { componentsHierarchyRootSeparator } from '../../../../conf/storybook/utils';
 

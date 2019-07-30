@@ -42,11 +42,10 @@ export class MButton extends Vue {
             value === MButtonSkin.Secondary
     })
     public skin: MButtonSkin;
-
     @Prop()
     public precision: string;
     @Prop()
-    public disabled: boolean;
+    public disabled;
     @Prop()
     public waiting: boolean;
     @Prop()

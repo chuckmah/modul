@@ -1,9 +1,9 @@
-import FrenchPlugin from '@chuckmah/modul-components/dist/lang/fr';
-import '@chuckmah/modul-components/dist/styles/main.scss';
-import { FRENCH } from '@chuckmah/modul-components/dist/utils/i18n/i18n';
-import '@chuckmah/modul-components/dist/utils/polyfills';
-import DefaultSpritesPlugin from '@chuckmah/modul-components/dist/utils/svg/default-sprites';
-import UtilsPlugin, { UtilsPluginOptions } from '@chuckmah/modul-components/dist/utils/utils-plugin';
+import FrenchPlugin from '@ulaval/modul-components/dist/lang/fr';
+import '@ulaval/modul-components/dist/styles/main.scss';
+import { FRENCH } from '@ulaval/modul-components/dist/utils/i18n/i18n';
+import '@ulaval/modul-components/dist/utils/polyfills';
+import DefaultSpritesPlugin from '@ulaval/modul-components/dist/utils/svg/default-sprites';
+import UtilsPlugin, { UtilsPluginOptions } from '@ulaval/modul-components/dist/utils/utils-plugin';
 import Vue, { PluginObject } from 'vue';
 import './styles/storybook.scss';
 
