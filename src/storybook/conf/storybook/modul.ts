@@ -1,9 +1,9 @@
-import FrenchPlugin from '@ulaval/modul-components/dist/lang/fr';
-import '@ulaval/modul-components/dist/styles/main.scss';
-import { FRENCH } from '@ulaval/modul-components/dist/utils/i18n/i18n';
-import '@ulaval/modul-components/dist/utils/polyfills';
-import DefaultSpritesPlugin from '@ulaval/modul-components/dist/utils/svg/default-sprites';
-import UtilsPlugin, { UtilsPluginOptions } from '@ulaval/modul-components/dist/utils/utils-plugin';
+import FrenchPlugin from '@packages/modul-components//lang/fr';
+import { FRENCH } from '@packages/modul-components//utils/i18n/i18n';
+import '@packages/modul-components/styles/main.scss';
+import '@packages/modul-components/utils/polyfills';
+import DefaultSpritesPlugin from '@packages/modul-components/utils/svg/default-sprites';
+import UtilsPlugin, { UtilsPluginOptions } from '@packages/modul-components/utils/utils-plugin';
 import Vue, { PluginObject } from 'vue';
 import './styles/storybook.scss';
 

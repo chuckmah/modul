@@ -13,7 +13,7 @@ module.exports = function (isLib) {
             extensions: ['.js', '.ts', '.html'],
             alias: {
                 'vue$': 'vue/dist/vue.esm.js',
-                '@ulaval/modul-components/dist': resolve("../../packages/modul-components/src")
+                '@packages/modul-components': resolve("../../packages/modul-components/src")
             }
         },
         module: {
@@ -61,16 +61,17 @@ module.exports = function (isLib) {
                 {
                     test: /\.ts$/,
                     use: [
-                        // {
-                        //     loader: 'thread-loader',
-                        //     options: {
-                        //         workers: require('os').cpus().length - 1
-                        //     }
-                        // },
+                        {
+                            loader: 'thread-loader',
+                            options: {
+                                workers: require('os').cpus().length - 1
+                            }
+                        },
                         {
                             loader: 'ts-loader',
                             options: {
-                                configFile: resolve('tsconfig.json')
+                                configFile: resolve('tsconfig.json'),
+                                happyPackMode: true
                             }
                         }
                     ]
