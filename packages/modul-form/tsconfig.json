@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "target": "es5",
         "lib": [
             "es5",
@@ -13,11 +12,6 @@
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "strictNullChecks": true,
-        "paths": {
-            "@ulaval/modul-components/dist/*": [
-                "../../packages/modul-components/src/*"
-            ],
-        },
         "types": [
             "node",
             "jest",
@@ -34,9 +28,8 @@
     },
     "exclude": [
         "node_modules",
-        "../../node_modules",
         "dist",
         "tests/meta/**.*",
-        "conf/tslint/**"
+        "conf/**"
     ]
 }

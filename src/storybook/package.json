@@ -7,8 +7,9 @@
     "scripts": {
         "storybook": "start-storybook --config-dir ./conf/storybook --port 8082 --static-dir ./conf/storybook/public --debug-webpack ",
         "storybook:openshift": "start-storybook --ci --port 8080 --config-dir ./conf/storybook --static-dir ./conf/storybook/public",
-        "storybook:unit": "jest --config ./conf/storybook/jest.config.storybook.js --verbose",
-        "storybook:unit:update": "jest --config ./conf/storybook/jest.config.storybook.js --verbose --updateSnapshot"
+        "test:ci": "jest -w 1 --ci --silent --config ./conf/storybook/jest.config.storybook.js --verbose",
+        "test": "jest --config ./conf/storybook/jest.config.storybook.js --verbose",
+        "test:update": "jest --config ./conf/storybook/jest.config.storybook.js --verbose --updateSnapshot"
     },
     "dependencies": {
         "vue": "^2.5.23",

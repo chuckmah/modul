@@ -17,9 +17,9 @@
         "unitwatch": "jest --watch --verbose --silent",
         "metagen": "node ./tests/meta/meta-generator \"./src/components\" \"./dist/components\" && node ./tests/meta/meta-generator \"./src/mixins\" \"./dist/mixins\"",
         "metagenv2": "node -r ./tests/meta-v2/ts-loader.js  ./tests/meta-v2/generate-meta.ts ./dist",
-        "test:ci": "jest --ci -w 1 --silent --coverage --testResultsProcessor=./tests/jest/ci-test-processor && jest -w 1 --ci --silent --config ./conf/storybook/jest.config.storybook.js --verbose",
-        "test": "jest --verbose --silent && jest --config ./conf/storybook/jest.config.storybook.js --verbose",
-        "test:update": "jest --verbose --silent --updateSnapshot && jest --config ./conf/storybook/jest.config.storybook.js --verbose --updateSnapshot",
+        "test:ci": "jest --ci -w 1 --silent --coverage --testResultsProcessor=./tests/jest/ci-test-processor",
+        "test": "jest --verbose --silent",
+        "test:update": "jest --verbose --silent --updateSnapshot",
         "lint": "tsc --noEmit && tslint --project tsconfig.json -s ../../node_modules/custom-tslint-formatters/formatters -t grouped ",
         "tslint:ci": "tsc --noEmit && tslint --project tsconfig.json -t junit -o reports/junit/js-lint-results.xml ",
         "prepare": "yarn run clean && yarn run build",
@@ -27,12 +27,8 @@
         "stats": "webpack --config conf/webpack.config.js --env.lib --env.silent --colors --profile --json > reports/stats.json && webpack-bundle-analyzer reports/stats.json",
         "print_version_win": "echo %npm_package_version%",
         "print_version_nx": "echo $npm_package_version",
-        "storybook": "start-storybook --config-dir ./conf/storybook --static-dir ./conf/storybook/public",
         "file-gen-cli": "./node_modules/.bin/file-gen-cli",
-        "sandboxes": "rimraf dist/**/* && webpack-dev-server --progress --config conf/webpack.config.js  --colors --port 8082 --open --history-api-fallback",
-        "storybook:openshift": "start-storybook --ci --port 8080 --config-dir ./conf/storybook --static-dir ./conf/storybook/public",
-        "storybook:unit": "jest --config ./conf/storybook/jest.config.storybook.js --verbose",
-        "storybook:unit:update": "jest --config ./conf/storybook/jest.config.storybook.js --verbose --updateSnapshot"
+        "sandboxes": "rimraf dist/**/* && webpack-dev-server --progress --config conf/webpack.config.js  --colors --port 8082 --open --history-api-fallback"
     },
     "jest-junit": {
         "output": "reports/junit/js-test-results.xml"

@@ -1,0 +1,182 @@
+<testsuites name="jest tests" tests="77" failures="0" time="3.8069999999999995">
+  <testsuite name="between validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:37:57" time="1.934" tests="12">
+    <testcase classname="between validator any type Given an undefined value it should be valid" name="between validator any type Given an undefined value it should be valid" time="0.008">
+    </testcase>
+    <testcase classname="between validator number value Given a value lower than the lower bound it should be invalid" name="between validator number value Given a value lower than the lower bound it should be invalid" time="0.001">
+    </testcase>
+    <testcase classname="between validator number value Given a value higher than the upper bound it should be invalid" name="between validator number value Given a value higher than the upper bound it should be invalid" time="0">
+    </testcase>
+    <testcase classname="between validator number value Given a value between the bounds it should be valid" name="between validator number value Given a value between the bounds it should be valid" time="0">
+    </testcase>
+    <testcase classname="between validator number value Given a value equal to the lower bound it should be valid" name="between validator number value Given a value equal to the lower bound it should be valid" time="0">
+    </testcase>
+    <testcase classname="between validator number value Given a value equal to the upper bound it should be valid" name="between validator number value Given a value equal to the upper bound it should be valid" time="0">
+    </testcase>
+    <testcase classname="between validator number value Given a value equal to 0 and betweent the bounds the bounds it should be valid" name="between validator number value Given a value equal to 0 and betweent the bounds the bounds it should be valid" time="0.001">
+    </testcase>
+    <testcase classname="between validator date value if value is lower than the lower bound, it should be invalid" name="between validator date value if value is lower than the lower bound, it should be invalid" time="0">
+    </testcase>
+    <testcase classname="between validator date value if value is higher than the upper bound, it should be invalid" name="between validator date value if value is higher than the upper bound, it should be invalid" time="0.001">
+    </testcase>
+    <testcase classname="between validator date value if value is between the bounds, it should be valid" name="between validator date value if value is between the bounds, it should be valid" time="0">
+    </testcase>
+    <testcase classname="between validator date value if value is equal to the lower bound, it should be valid" name="between validator date value if value is equal to the lower bound, it should be valid" time="0.001">
+    </testcase>
+    <testcase classname="between validator date value if value is equal to the upper bound, it should be valid" name="between validator date value if value is equal to the upper bound, it should be valid" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="compare validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:37:59" time="0.16" tests="3">
+    <testcase classname="compare validator it should return true if all controls are undefined" name="compare validator it should return true if all controls are undefined" time="0.004">
+    </testcase>
+    <testcase classname="compare validator it should return false if one value is different" name="compare validator it should return false if one value is different" time="0.001">
+    </testcase>
+    <testcase classname="compare validator it should return true if all values are the same" name="compare validator it should return true if all values are the same" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Required validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:37:59" time="0.137" tests="4">
+    <testcase classname="Required validator should return true when undefined" name="Required validator should return true when undefined" time="0.002">
+    </testcase>
+    <testcase classname="Required validator should return false when unfinished " name="Required validator should return false when unfinished " time="0">
+    </testcase>
+    <testcase classname="Required validator should return false when invalid " name="Required validator should return false when invalid " time="0.001">
+    </testcase>
+    <testcase classname="Required validator should return true when valid " name="Required validator should return true when valid " time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Required validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:37:59" time="0.26" tests="7">
+    <testcase classname="Required validator should return true when undefined" name="Required validator should return true when undefined" time="0.008">
+    </testcase>
+    <testcase classname="Required validator should return true when unfinished " name="Required validator should return true when unfinished " time="0.002">
+    </testcase>
+    <testcase classname="Required validator should return true when invalid " name="Required validator should return true when invalid " time="0.002">
+    </testcase>
+    <testcase classname="Required validator should return false when is before start date" name="Required validator should return false when is before start date" time="0.002">
+    </testcase>
+    <testcase classname="Required validator should return true when date is start date" name="Required validator should return true when date is start date" time="0.001">
+    </testcase>
+    <testcase classname="Required validator should return true when date is end date" name="Required validator should return true when date is end date" time="0.001">
+    </testcase>
+    <testcase classname="Required validator should return false when date is after end date" name="Required validator should return false when date is after end date" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Min validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:00" time="0.18" tests="6">
+    <testcase classname="Min validator type &quot;any&quot; FormControl it should return true if value is undefined" name="Min validator type &quot;any&quot; FormControl it should return true if value is undefined" time="0.002">
+    </testcase>
+    <testcase classname="Min validator numeric FormControl it should return false if value is 0 and min value is higher" name="Min validator numeric FormControl it should return false if value is 0 and min value is higher" time="0.001">
+    </testcase>
+    <testcase classname="Min validator numeric FormControl it should return true if value is 0 and min value is lower" name="Min validator numeric FormControl it should return true if value is 0 and min value is lower" time="0">
+    </testcase>
+    <testcase classname="Min validator numeric FormControl it should return false if value is lower" name="Min validator numeric FormControl it should return false if value is lower" time="0.001">
+    </testcase>
+    <testcase classname="Min validator numeric FormControl it should return true if value is same" name="Min validator numeric FormControl it should return true if value is same" time="0">
+    </testcase>
+    <testcase classname="Min validator numeric FormControl it should return true if value is higher" name="Min validator numeric FormControl it should return true if value is higher" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Required validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:00" time="0.162" tests="5">
+    <testcase classname="Required validator if value is undefined, it should be invalid" name="Required validator if value is undefined, it should be invalid" time="0.002">
+    </testcase>
+    <testcase classname="Required validator if value is empty array, it should be invalid" name="Required validator if value is empty array, it should be invalid" time="0">
+    </testcase>
+    <testcase classname="Required validator is value is empty string, it should be invalid" name="Required validator is value is empty string, it should be invalid" time="0.001">
+    </testcase>
+    <testcase classname="Required validator if value is 0, it should be valid" name="Required validator if value is 0, it should be valid" time="0">
+    </testcase>
+    <testcase classname="Required validator if value is set, it should be valid" name="Required validator if value is set, it should be valid" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Max length validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:00" time="0.156" tests="8">
+    <testcase classname="Max length validator it should return true if value is undefined" name="Max length validator it should return true if value is undefined" time="0.002">
+    </testcase>
+    <testcase classname="Max length validator it should return true if value is empty string" name="Max length validator it should return true if value is empty string" time="0">
+    </testcase>
+    <testcase classname="Max length validator it should return false if is longer" name="Max length validator it should return false if is longer" time="0">
+    </testcase>
+    <testcase classname="Max length validator it should return true is same" name="Max length validator it should return true is same" time="0">
+    </testcase>
+    <testcase classname="Max length validator it should return true if number length is shorter" name="Max length validator it should return true if number length is shorter" time="0">
+    </testcase>
+    <testcase classname="Max length validator it should return false if number length is longer" name="Max length validator it should return false if number length is longer" time="0">
+    </testcase>
+    <testcase classname="Max length validator it should return false if array length is longer" name="Max length validator it should return false if array length is longer" time="0">
+    </testcase>
+    <testcase classname="Max length validator it should return true if array length is shorter" name="Max length validator it should return true if array length is shorter" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Max validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:00" time="0.151" tests="6">
+    <testcase classname="Max validator &quot;any&quot; type form  it should return true if value is undefined" name="Max validator &quot;any&quot; type form  it should return true if value is undefined" time="0.001">
+    </testcase>
+    <testcase classname="Max validator number value it should return true if value is 0 and max value is higher" name="Max validator number value it should return true if value is 0 and max value is higher" time="0">
+    </testcase>
+    <testcase classname="Max validator number value it should return false if value is 0 and max value is lower" name="Max validator number value it should return false if value is 0 and max value is lower" time="0.001">
+    </testcase>
+    <testcase classname="Max validator number value it should return true if value is lower than max value" name="Max validator number value it should return true if value is lower than max value" time="0">
+    </testcase>
+    <testcase classname="Max validator number value it should return true if value is same" name="Max validator number value it should return true if value is same" time="0.001">
+    </testcase>
+    <testcase classname="Max validator number value it should return false if value is higher" name="Max validator number value it should return false if value is higher" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Min length validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:00" time="0.145" tests="7">
+    <testcase classname="Min length validator if value is undefined, it should be valid" name="Min length validator if value is undefined, it should be valid" time="0.002">
+    </testcase>
+    <testcase classname="Min length validator if value is empty string, it should be valid" name="Min length validator if value is empty string, it should be valid" time="0">
+    </testcase>
+    <testcase classname="Min length validator if is longer, it should be valid" name="Min length validator if is longer, it should be valid" time="0.001">
+    </testcase>
+    <testcase classname="Min length validator it should return true is same" name="Min length validator it should return true is same" time="0">
+    </testcase>
+    <testcase classname="Min length validator if number length is longer, it should be valid" name="Min length validator if number length is longer, it should be valid" time="0.001">
+    </testcase>
+    <testcase classname="Min length validator if array length is smaller, it should be invalid" name="Min length validator if array length is smaller, it should be invalid" time="0">
+    </testcase>
+    <testcase classname="Min length validator if array length is longer, it should be valid" name="Min length validator if array length is longer, it should be valid" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="FromControl" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:01" time="0.084" tests="8">
+    <testcase classname="FromControl given a FormControl with no validation should be empty of control and valid" name="FromControl given a FormControl with no validation should be empty of control and valid" time="0.002">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with no validation when edited should run validation and set flag" name="FromControl given a FormControl with no validation when edited should run validation and set flag" time="0.001">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with no validation when edited should reset to inital value on reset" name="FromControl given a FormControl with no validation when edited should reset to inital value on reset" time="0.001">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with a always false OnGoing validation should be invalid and no error" name="FromControl given a FormControl with a always false OnGoing validation should be invalid and no error" time="0.001">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with a always false OnGoing validation when edited should be invalid and has error" name="FromControl given a FormControl with a always false OnGoing validation when edited should be invalid and has error" time="0.001">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with a always false OnGoing validation when edited should reset message inital value on reset" name="FromControl given a FormControl with a always false OnGoing validation when edited should reset message inital value on reset" time="0">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with a always false OnGoing validation when edited should be valid when readonly" name="FromControl given a FormControl with a always false OnGoing validation when edited should be valid when readonly" time="0.001">
+    </testcase>
+    <testcase classname="FromControl given a FormControl with a always false OnGoing validation when edited should be valid when disabled" name="FromControl given a FormControl with a always false OnGoing validation when edited should be valid when disabled" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="FormArray" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:01" time="0.252" tests="3">
+    <testcase classname="FormArray given a FormArray with no controls should be empty of control and valid" name="FormArray given a FormArray with no controls should be empty of control and valid" time="0.002">
+    </testcase>
+    <testcase classname="FormArray given a FormArray with no controls when adding a control it should add the control" name="FormArray given a FormArray with no controls when adding a control it should add the control" time="0.001">
+    </testcase>
+    <testcase classname="FormArray given an FormGroup with a control when removing a control it should remove the control" name="FormArray given an FormGroup with a control when removing a control it should remove the control" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="email validator" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:01" time="0.118" tests="4">
+    <testcase classname="email validator it should be valid if value is empty" name="email validator it should be valid if value is empty" time="0.001">
+    </testcase>
+    <testcase classname="email validator it should be invalid with email missing &quot;@&quot;" name="email validator it should be invalid with email missing &quot;@&quot;" time="0.001">
+    </testcase>
+    <testcase classname="email validator it should be invalid with email missing &quot;.&quot;" name="email validator it should be invalid with email missing &quot;.&quot;" time="0">
+    </testcase>
+    <testcase classname="email validator it should return true with valid email" name="email validator it should return true with valid email" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="FormGroup" errors="0" failures="0" skipped="0" timestamp="2019-07-30T17:38:01" time="0.068" tests="4">
+    <testcase classname="FormGroup given a FormGroup with no control should be empty of control and valid" name="FormGroup given a FormGroup with no control should be empty of control and valid" time="0.002">
+    </testcase>
+    <testcase classname="FormGroup given a FormGroup with no control when adding a required control should add the controls properly" name="FormGroup given a FormGroup with no control when adding a required control should add the controls properly" time="0.001">
+    </testcase>
+    <testcase classname="FormGroup given an FormGroup with a control should have the control and be valid" name="FormGroup given an FormGroup with a control should have the control and be valid" time="0.001">
+    </testcase>
+    <testcase classname="FormGroup given an FormGroup with a control when removing it should removing the control properly" name="FormGroup given an FormGroup with a control when removing it should removing the control properly" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>

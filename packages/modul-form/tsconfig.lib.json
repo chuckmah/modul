@@ -1,6 +1,11 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
+        "outDir": "dist",
+        "rootDir": "src",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
         "target": "es5",
         "lib": [
             "es5",
@@ -9,15 +14,9 @@
         ],
         "module": "es2015",
         "moduleResolution": "node",
-        "sourceMap": true,
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "strictNullChecks": true,
-        "paths": {
-            "@ulaval/modul-components/dist/*": [
-                "../../packages/modul-components/src/*"
-            ],
-        },
         "types": [
             "node",
             "jest",
@@ -25,18 +24,19 @@
         ],
         "typeRoots": [
             "node_modules/@types"
-        ],
-        "plugins": [
-            {
-                "name": "typescript-tslint-plugin"
-            }
         ]
     },
+    "plugins": [
+        {
+            "name": "typescript-tslint-plugin"
+        }
+    ],
+    "include": [
+        "src/**/*"
+    ],
     "exclude": [
-        "node_modules",
-        "../../node_modules",
-        "dist",
-        "tests/meta/**.*",
-        "conf/tslint/**"
+        "src/**/*.spec.*",
+        "src/**/*.sandbox.*",
+        "src/**/*.stories.*"
     ]
 }

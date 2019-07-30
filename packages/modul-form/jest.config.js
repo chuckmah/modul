@@ -1,4 +1,3 @@
-
 module.exports = {
     testURL: 'http://localhost/',
     globals: {
@@ -26,8 +25,7 @@ module.exports = {
     moduleNameMapper: {
         "^(.+\\.html)(\\?style=\\..+)?$": "$1",
         "\\.(css|less|sass|scss)$": "<rootDir>/tests/jest/jest-ignore.js",
-        "\\.min\\.(css|less|sass|scss)|\\.svg$": "<rootDir>/tests/jest/jest-ignore.js",
-        "@ulaval/modul-components/dist/(.*)": "<rootDir>/../../packages/modul-components/src/$1",
+        "\\.min\\.(css|less|sass|scss)|\\.svg$": "<rootDir>/tests/jest/jest-ignore.js"
     },
     snapshotSerializers: [
         "<rootDir>../../node_modules/jest-serializer-vue"

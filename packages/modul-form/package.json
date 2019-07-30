@@ -1,0 +1,86 @@
+{
+    "name": "@chuckmah/modul-form",
+    "version": "1.0.0-beta.2",
+    "description": "TODO: description",
+    "author": "Charles Maheu <choc.mah@gmail.com>",
+    "private": false,
+    "homepage": "https://ulaval.github.io/modul/tree/master/packages/modul-form#readme",
+    "license": "Apache-2.0",
+    "publishConfig": {
+        "access": "public"
+    },
+    "peerDependencies": {
+        "vue": "^2.5.9"
+    },
+    "files": [
+        "src/**/*.ts",
+        "dist"
+    ],
+    "scripts": {
+        "clean": "rimraf dist",
+        "build": "tsc --project tsconfig.lib.json && copyfiles -u 1 \"./src/**/*.json\" dist && copyfiles -u 1 \"./src/**/*.html\" dist && copyfiles -u 1 \"./src/**/*.scss\" dist && copyfiles -u 1 \"./src/**/*.css\" dist && yarn run assetsToDist",
+        "assetsToDist": "copyfiles -u 1 \"./src/assets/**/*\" dist",
+        "prepare": "yarn run clean && yarn run build",
+        "test:ci": "jest --ci -w 1 --silent --coverage --testResultsProcessor=./tests/jest/ci-test-processor",
+        "test": "jest --verbose ",
+        "test:update": "jest --verbose --silent --updateSnapshot",
+        "lint": "tsc --noEmit && tslint --project tsconfig.json -s ../../node_modules/custom-tslint-formatters/formatters -t grouped "
+    },
+    "dependencies": {
+        "@ulaval/modul-components": "^1.0.0-beta.115"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.3.4",
+        "@types/jest": "^23.3.14",
+        "@types/node": "^10.12.20",
+        "@types/sprintf-js": "^1.1.0",
+        "@types/webpack-env": "^1.13.6",
+        "@vue/test-utils": "^1.0.0-beta.29",
+        "acorn": "^6.0.0",
+        "autoprefixer": "^9.4.7",
+        "babel-plugin-dynamic-import-node": "^2.2.0",
+        "babel-plugin-require-context-hook": "^1.0.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-vue": "^2.0.2",
+        "copyfiles": "^1.2.0",
+        "cross-env": "^5.2.0",
+        "custom-tslint-formatters": "^2.4.0",
+        "fork-ts-checker-webpack-plugin": "^0.5.2",
+        "html-webpack-plugin": "^3.2.0",
+        "http-server": "^0.11.1",
+        "husky": "^1.3.1",
+        "is-property": "^1.0.2",
+        "jest": "^23.6.0",
+        "jest-html-reporter": "^2.4.4",
+        "jest-junit": "^3.6.0",
+        "jest-serializer-vue": "^2.0.2",
+        "node-html-parser": "^1.1.10",
+        "node-sass": "^4.11.0",
+        "rimraf": "^2.6.2",
+        "stylelint": "^9.3.0",
+        "stylelint-config-standard": "^18.2.0",
+        "stylelint-scss": "^3.1.3",
+        "ts-jest": "^23.10.5",
+        "ts-morph": "^1.0.0",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.14.0",
+        "tslint-config-standard": "^8.0.1",
+        "typescript": "^3.2.2",
+        "typescript-tslint-plugin": "^0.3.0",
+        "vue": "^2.5.23",
+        "vue-class-component": "^6.1.1",
+        "vue-loader": "^15.7.0",
+        "vue-property-decorator": "^6.0.0",
+        "vue-router": "^3.0.1",
+        "vue-server-renderer": "^2.5.23",
+        "vue-template-compiler": "^2.5.23",
+        "vue-template-loader": "^1.0.0"
+    },
+    "jest-junit": {
+        "output": "reports/junit/js-test-results.xml"
+    },
+    "jest-html-reporter": {
+        "outputPath": "reports/junit/js-test-results.html",
+        "includeFailureMsg": true
+    }
+}

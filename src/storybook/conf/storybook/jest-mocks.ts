@@ -1,4 +1,4 @@
-import uuid from '@packages/modul-components/utils/uuid/uuid';
+import uuid from '@ulaval/modul-components/dist/utils/uuid/uuid';
 
-jest.mock('@packages/modul-components/utils/uuid/uuid');
+jest.mock('@ulaval/modul-components/dist/utils/uuid/uuid');
 (uuid.generate as jest.Mock).mockReturnValue('uuid');
