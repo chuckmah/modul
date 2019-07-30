@@ -34,6 +34,7 @@ export class MButton extends Vue {
             value === MButtonType.Reset
     })
     public type: MButtonType;
+
     @Prop({
         default: MButtonSkin.Primary,
         validator: value =>
