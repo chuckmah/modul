@@ -1,5 +1,5 @@
 import MetaAll from '@/meta/meta-all';
-import { ROUTER_PHILOSOPHY, ROUTER_STANDARDS } from '@/router';
+import { ROUTER_COMPONENTS, ROUTER_PHILOSOPHY, ROUTER_STANDARDS } from '@/router';
 import IconButtonPlugin from '@ulaval/modul-components/dist/components/icon-button/icon-button';
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
 import { PluginObject } from 'vue';
@@ -44,6 +44,9 @@ export class MWHeader extends ModulWebsite {
         switch (menuSection) {
             case ModulMenuSection.Home:
                 this.$router.push('/');
+                break;
+            case ModulMenuSection.Components:
+                this.$router.push(this.$routerIndex.for(ROUTER_COMPONENTS));
                 break;
             case ModulMenuSection.Philosophy:
                 this.$router.push(this.$routerIndex.for(ROUTER_PHILOSOPHY));

@@ -35,11 +35,18 @@
             }
         ]
     },
+    "include": [
+        "../../packages/modul-components/src/*",
+        "../../packages/modul-form/src/*",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx"
+    ],
     "exclude": [
-        "node_modules",
-        "../../node_modules",
-        "dist",
-        "tests/meta/**.*",
-        "conf/tslint/**"
+        "../../packages/modul-components/src/typings.d.ts",
+        "../../packages/modul-form/src/typings.d.ts",
+        "node_modules"
     ]
 }

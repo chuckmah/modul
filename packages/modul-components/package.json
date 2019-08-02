@@ -17,6 +17,7 @@
         "unitwatch": "jest --watch --verbose --silent",
         "metagen": "node ./tests/meta/meta-generator \"./src/components\" \"./dist/components\" && node ./tests/meta/meta-generator \"./src/mixins\" \"./dist/mixins\"",
         "metagenv2": "node -r ./tests/meta-v2/ts-loader.js  ./tests/meta-v2/generate-meta.ts ./dist",
+        "metagenv3": "./node_modules/.bin/meta-generator.cmd ./dist",
         "test:ci": "jest --ci -w 1 --silent --coverage --testResultsProcessor=./tests/jest/ci-test-processor",
         "test": "jest --verbose --silent",
         "test:update": "jest --verbose --silent --updateSnapshot",
@@ -62,6 +63,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
+        "meta-generator": "^1.0.0",
         "@storybook/addon-a11y": "^5.1.8",
         "@storybook/addon-actions": "^5.1.8",
         "@storybook/addon-backgrounds": "^5.1.8",

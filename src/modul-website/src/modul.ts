@@ -1,4 +1,5 @@
 import AccordionPlugin from '@ulaval/modul-components/dist/components/accordion/accordion';
+import ButtonPlugin from '@ulaval/modul-components/dist/components/button/button';
 import DropdownPlugin from '@ulaval/modul-components/dist/components/dropdown/dropdown';
 import I18nPlugin from '@ulaval/modul-components/dist/components/i18n/i18n';
 import IconButtonPlugin from '@ulaval/modul-components/dist/components/icon-button/icon-button';
@@ -34,6 +35,7 @@ const ModulPlugin: PluginObject<any> = {
         Vue.use(PanelPlugin);
         Vue.use(MessagePlugin);
         Vue.use(SearchfieldPlugin);
+        Vue.use(ButtonPlugin);
     }
 };
 

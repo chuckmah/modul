@@ -119,7 +119,7 @@ export class MButton extends Vue {
     }
 }
 
-const ButtonPlugin: PluginObject<any> = {
+export const ButtonPlugin: PluginObject<any> = {
     install(v, options): void {
         v.prototype.$log.debug(BUTTON_NAME, 'plugin.install');
         v.use(IconPlugin);

@@ -3,7 +3,7 @@ import Vue from 'vue';
 import Router, { RouteConfig } from 'vue-router';
 import { VueRouter } from 'vue-router/types/router';
 import { MIconGallery } from './components/icon-gallery/icon-gallery';
-import { Category } from './components/libs/category';
+import { MWComponentsPage } from './pages/components/components';
 import { MWHomePage } from './pages/home/home';
 import { MWPhilosophyPage } from './pages/philosophy/philosophy';
 import { MWStandardsPage } from './pages/standards/standards';
@@ -17,7 +17,6 @@ declare module 'vue/types/vue' {
 }
 
 Vue.use(Router);
-// Vue.use(MetaAll, Meta);
 
 export interface RoutePath {
     path: string;
@@ -196,88 +195,13 @@ const routerFactory: RouterFactoryFn = () => {
     //     });
     // });
 
-    // let gettingStartedRoute: string = i18n.translate(`pages:${GettingStarted.section}-route`);
-    // GettingStarted.getPages().forEach((page, index) => {
-    //     let pageRoute: string = i18n.translate(`pages:${page}-route`);
-
-    //     pushRoute(page, gettingStartedRoutes, {
-    //         path: `/${gettingStartedRoute}/${pageRoute}`,
-    //         meta: { page: page, sectionObj: GettingStarted },
-    //         component: PageDetails
-    //     });
-
-    //     let tabs: string[] = GettingStarted.getPageTabs(page);
-
-    //     if (tabs.length > 0) {
-    //         gettingStartedRoutes[index].children = [];
-
-    //         let defaultTabRoute: string = '';
-    //         tabs.forEach((tab, tabIndex) => {
-    //             let tabRoute: string = i18n.translate(`pages:${page}.${tab}-route`);
-
-    //             pushRoute(tab, gettingStartedRoutes[index].children, {
-    //                 path: tabRoute,
-    //                 meta: { page: page, sectionObj: GettingStarted, tab: tab },
-    //                 component: PageTab
-    //             });
-
-    //             if (tabIndex == 0) {
-    //                 defaultTabRoute = tabRoute;
-    //             }
-    //         });
-
-    //         gettingStartedRoutes[index].children.push({
-    //             path: '',
-    //             redirect: defaultTabRoute
-    //         });
-    //     }
-    // });
-
-    // let standardRoute: string = i18n.translate(`pages:${Standards.section}-route`);
-    // Standards.getPages().forEach((page, index) => {
-    //     let pageRoute: string = i18n.translate(`pages:${page}-route`);
-
-    //     pushRoute(page, standardsRoutes, {
-    //         path: `/${standardRoute}/${pageRoute}`,
-    //         meta: { page: page, sectionObj: Standards },
-    //         component: PageDetails
-    //     });
-
-    //     let tabs: string[] = Standards.getPageTabs(page);
-
-    //     if (tabs.length > 0) {
-    //         standardsRoutes[index].children = [];
-
-    //         let defaultTabRoute: string = '';
-    //         tabs.forEach((tab, tabIndex) => {
-    //             let tabRoute: string = i18n.translate(`pages:${page}.${tab}-route`);
-
-    //             pushRoute(tab, standardsRoutes[index].children, {
-    //                 path: tabRoute,
-    //                 meta: { page: page, sectionObj: Standards, tab: tab },
-    //                 component: PageTab
-    //             });
-
-    //             if (tabIndex === 0) {
-    //                 defaultTabRoute = tabRoute;
-    //             }
-    //         });
-
-    //         standardsRoutes[index].children.push({
-    //             path: '',
-    //             redirect: defaultTabRoute
-    //         });
-    //     }
-    // });
-
     pushRoute('/', modulRoutes, {
         path: '/',
         component: MWHomePage
     });
     pushRoute(ROUTER_COMPONENTS, modulRoutes, {
         path: '/' + componentsRoute,
-        component: Category,
-        children: categoryRoutes
+        component: MWComponentsPage
     });
     pushRoute(ROUTER_PHILOSOPHY, modulRoutes, {
         path: '/' + i18n.translate(ROUTER_PHILOSOPHY),
@@ -463,13 +387,6 @@ const routerFactory: RouterFactoryFn = () => {
             }
         ]
     });
-
-    // pushRoute(Standards.section, modulRoutes, {
-    //     path: '/' + standardRoute,
-    //     meta: { sectionObj: Standards },
-    //     component: PageViewer,
-    //     children: standardsRoutes
-    // });
 
     let vueRouter: VueRouter = new Router({
         mode: 'history',

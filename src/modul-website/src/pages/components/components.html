@@ -1,0 +1,31 @@
+<div class="mw-components">
+    <m-expandable-layout class="mw-components__body"
+                         :open="showMenu"
+                         panel-width="360px">
+        <div class="mw-components__button">
+            <m-icon-button @click="toggleMenu()"
+                           v-if="!showMenu"
+                           icon-name="m-standard-edit"
+                           skin="light"
+                           icon-size="20px"
+                           button-size="20px">
+            </m-icon-button>
+            <m-icon-button @click="toggleMenu()"
+                           v-else
+                           icon-name="m-svg__close-clear"
+                           icon-size="20px"
+                           button-size="20px">
+            </m-icon-button>
+        </div>
+        <div class="mw-components__content">
+            content
+        </div>
+        <template slot="panel">
+            <div class="mw-components__sidemenu">
+                <div class="mw-standards__sidemenu-title">
+                    side menu
+                </div>
+            </div>
+        </template>
+    </m-expandable-layout>
+</div>
