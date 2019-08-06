@@ -1,7 +1,7 @@
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
 import Component from 'vue-class-component';
 import { Watch } from 'vue-property-decorator';
-import { KeyMap } from '../../store/modules/components/components-state';
+import { KeyMap } from '../../store/modules/components-old/components-state';
 import * as PagesActions from '../../store/modules/pages/actions';
 import * as PagesGetters from '../../store/modules/pages/getters';
 import { ModulWebsite } from '../modul-website';

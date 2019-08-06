@@ -10,7 +10,6 @@ const FrenchPlugin: PluginObject<any> = {
         i18n.addMessages(FRENCH, require('./modul.fr.json'));
         i18n.addMessages(FRENCH, require('../../router.fr.json'));
         i18n.addMessages(FRENCH, require('../../components/pages/pages.fr.json'));
-
     }
 };
 

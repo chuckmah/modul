@@ -1,6 +1,6 @@
 import Component from 'vue-class-component';
 import Meta, { ComponentMetaEx, ModulComponentStatus } from '../../meta/meta-all';
-import { GET_CATEGORY } from '../../store/modules/components/getters';
+import { GET_CATEGORY } from '../../store/modules/components-old/getters';
 import { ModulWebsite } from '../modul-website';
 import WithRender from './category-list.html?style=./category-list.scss';
 

@@ -1,7 +1,7 @@
 import { MetaEvent } from '@ulaval/modul-components/dist/meta/v2';
 import Component from 'vue-class-component';
 import { ComponentMetaEx } from '../../meta/meta-all';
-import { GET_COMPONENT } from '../../store/modules/components/getters';
+import { GET_COMPONENT } from '../../store/modules/components-old/getters';
 import { ModulWebsite } from '../modul-website';
 import WithRender from './component-events.html?style=./component-events.scss';
 

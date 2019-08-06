@@ -12,13 +12,15 @@
         "build": "npm run mdToAssets && vue-cli-service build",
         "lint": "vue-cli-service lint",
         "stylelint": "stylelint \"src/**/*.css\" \"src/**/*.scss\" --config conf/stylelint.json",
-        "mdToAssets": "rimraf public/assets/md && copyfiles -u 4 \"./src/meta/components/**/*.md\" public/assets/md && copyfiles -u 4 \"./src/meta/directives/**/*.md\" public/assets/md && copyfiles -u 4 \"./src/meta/components/**/*.js\" public/assets/md && copyfiles -u 1 \"./src/content/**/*.md\" public/assets/md",
+        "mdToAssets": "rimraf public/assets/md && copyfiles -u 1 \"./src/content/**/*.md\" public/assets/md",
         "prod": "http-server dist -p 8083 -g -o",
         "print_version_win": "echo %npm_package_version%",
         "print_version_nx": "echo $npm_package_version"
     },
     "dependencies": {
         "@ulaval/modul-components": "^1.0.0-beta.110",
+        "@ulaval/modul-vuex": "^1.0.1",
+        "meta-generator": "^1.0.0",
         "highlight.js": "^9.12.0",
         "markdown-it": "^8.4.0",
         "moment": "^2.19.3",

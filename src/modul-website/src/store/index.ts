@@ -1,22 +1,18 @@
-import Vue from 'vue';
-import Vuex, { DispatchOptions } from 'vuex';
-import { components } from './modules/components/components';
-import { sections } from './modules/pages/sections';
+// import Vue from 'vue';
+// import Vuex, { Store } from 'vuex';
 
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
-class ModulStore extends Vuex.Store<any> {
-    public async dispatchAsync(type: string, payload?: any, options?: DispatchOptions): Promise<any[]> {
-        return this.dispatch(type, payload, options);
-    }
-}
+// const store: Store<any> = new Vuex.Store({
+//     strict: process.env.NODE_ENV !== 'production'
+// });
 
-const store: ModulStore = new ModulStore({
-    strict: true, // TODO debug mode only
-    modules: {
-        sections: sections,
-        components: components
-    }
-});
+// // const store: ModulStore = new ModulStore({
+// //     strict: true, // TODO debug mode only
+// //     modules: {
+// //         sections: sections,
+// //         components: components
+// //     }
+// // });
 
-export default store;
+// export default store;

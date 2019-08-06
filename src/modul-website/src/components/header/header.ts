@@ -1,4 +1,4 @@
-import MetaAll from '@/meta/meta-all';
+import componentsMeta from '@/content/components-meta';
 import { ROUTER_COMPONENTS, ROUTER_PHILOSOPHY, ROUTER_STANDARDS } from '@/router';
 import IconButtonPlugin from '@ulaval/modul-components/dist/components/icon-button/icon-button';
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
@@ -40,6 +40,10 @@ export class MWHeader extends ModulWebsite {
         return this.openSearch;
     }
 
+    get modulVersion(): string {
+        return componentsMeta.version;
+    }
+
     private navigateTo(event: MouseEvent, menuSection: string) {
         switch (menuSection) {
             case ModulMenuSection.Home:
@@ -59,9 +63,6 @@ export class MWHeader extends ModulWebsite {
         }
     }
 
-    get modulVersion(): string {
-        return MetaAll.getModulVersion();
-    }
 }
 
 export const MWHEADER_NAME: string = 'mw-header';

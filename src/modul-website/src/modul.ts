@@ -14,13 +14,12 @@ import SearchfieldPlugin from '@ulaval/modul-components/dist/components/searchfi
 import SliderPlugin from '@ulaval/modul-components/dist/components/slider/slider';
 import TextfieldPlugin from '@ulaval/modul-components/dist/components/textfield/textfield';
 import { UtilsPlugin } from '@ulaval/modul-components/dist/utils';
-import { FRENCH } from '@ulaval/modul-components/dist/utils/i18n/i18n';
 import Vue, { PluginObject } from 'vue';
 
 const ModulPlugin: PluginObject<any> = {
     install(v, options): void {
 
-        Vue.use(UtilsPlugin, { propagateVueParserErrors: false, i18PluginOptions: { curLang: FRENCH } });
+        Vue.use(UtilsPlugin, { propagateVueParserErrors: false, i18PluginOptions: { curLang: options.curLang } });
         Vue.use(I18nPlugin);
         Vue.use(IconPlugin);
         Vue.use(IconButtonPlugin);

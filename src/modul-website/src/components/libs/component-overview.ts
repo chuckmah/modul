@@ -1,8 +1,8 @@
 import { ComponentMeta } from '@ulaval/modul-components/dist/meta/meta';
 import Component from 'vue-class-component';
 import { ModulComponentStatus } from '../../meta/meta-all';
-import * as ComponentsActions from '../../store/modules/components/actions';
-import * as ComponentsGetters from '../../store/modules/components/getters';
+import * as ComponentsActions from '../../store/modules/components-old/actions';
+import * as ComponentsGetters from '../../store/modules/components-old/getters';
 import { ModulWebsite } from '../modul-website';
 import WithRender from './component-overview.html?style=./component-overview.scss';
 

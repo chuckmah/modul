@@ -2,9 +2,9 @@ import { ComponentMeta } from '@ulaval/modul-components/dist/meta/meta';
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
 import Component from 'vue-class-component';
 import { Watch } from 'vue-property-decorator';
-import * as ComponentsActions from '../../store/modules/components/actions';
-import { KeyMap } from '../../store/modules/components/components-state';
-import * as ComponentsGetters from '../../store/modules/components/getters';
+import * as ComponentsActions from '../../store/modules/components-old/actions';
+import { KeyMap } from '../../store/modules/components-old/components-state';
+import * as ComponentsGetters from '../../store/modules/components-old/getters';
 import { ModulWebsite } from '../modul-website';
 import WithRender from './component.html';
 
