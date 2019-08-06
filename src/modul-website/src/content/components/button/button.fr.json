@@ -1,8 +1,8 @@
 {
-    "website-name": "Bouton",
+    "name": "Bouton",
     "components": {
         "MButton": {
-            "componentName": "Bouton",
+            "name": "Bouton",
             "props": {
                 "type": "Type de bouton",
                 "skin": "Propriété pour changer le visuel du bouton",

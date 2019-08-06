@@ -1,4 +1,4 @@
-import componentsMeta from '@/content/components-meta';
+import modulMeta from '@/modul-meta';
 import { ROUTER_COMPONENTS, ROUTER_PHILOSOPHY, ROUTER_STANDARDS } from '@/router';
 import IconButtonPlugin from '@ulaval/modul-components/dist/components/icon-button/icon-button';
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
@@ -41,7 +41,7 @@ export class MWHeader extends ModulWebsite {
     }
 
     get modulVersion(): string {
-        return componentsMeta.version;
+        return modulMeta.version;
     }
 
     private navigateTo(event: MouseEvent, menuSection: string) {

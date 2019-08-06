@@ -1,6 +1,6 @@
 import { Meta, MetaService } from 'meta-generator/dist';
 
-class ComponentsMeta {
+class ModulMeta {
 
     private _modulComponentMeta: MetaService;
 
@@ -17,6 +17,6 @@ class ComponentsMeta {
     }
 
 }
-const componentsMeta: ComponentsMeta = new ComponentsMeta();
+const modulMeta: ModulMeta = new ModulMeta();
 
-export default componentsMeta;
+export default modulMeta;

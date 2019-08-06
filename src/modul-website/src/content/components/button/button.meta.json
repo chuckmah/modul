@@ -1,6 +1,6 @@
 {
     "category": "button",
-    "type": "component",
+    "type": "components",
     "beta": false,
     "components": [
         "MButton"

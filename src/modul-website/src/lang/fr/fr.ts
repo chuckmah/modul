@@ -1,6 +1,7 @@
 import ComponentsFrenchPlugin from '@ulaval/modul-components/dist/lang/fr';
 import { FRENCH, Messages } from '@ulaval/modul-components/dist/utils/i18n/i18n';
 import { PluginObject } from 'vue';
+import FrenchMetaPlugin from './meta.fr';
 
 const FrenchPlugin: PluginObject<any> = {
     install(v, options) {
@@ -10,6 +11,7 @@ const FrenchPlugin: PluginObject<any> = {
         i18n.addMessages(FRENCH, require('./modul.fr.json'));
         i18n.addMessages(FRENCH, require('../../router.fr.json'));
         i18n.addMessages(FRENCH, require('../../components/pages/pages.fr.json'));
+        v.use(FrenchMetaPlugin);
     }
 };
 
