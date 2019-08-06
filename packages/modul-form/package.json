@@ -1,6 +1,6 @@
 {
     "name": "@chuckmah/modul-form",
-    "version": "1.0.0-beta.2",
+    "version": "1.0.0-beta.3",
     "description": "TODO: description",
     "author": "Charles Maheu <choc.mah@gmail.com>",
     "private": false,
@@ -27,7 +27,7 @@
         "lint": "tsc --noEmit && tslint --project tsconfig.json -s ../../node_modules/custom-tslint-formatters/formatters -t grouped "
     },
     "dependencies": {
-        "@ulaval/modul-components": "^1.0.0-beta.115"
+        "@ulaval/modul-components": "^1.0.0-beta.116"
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",

@@ -1,6 +1,6 @@
 {
     "name": "@ulaval/modul-components",
-    "version": "1.0.0-beta.115",
+    "version": "1.0.0-beta.116",
     "description": "Component library",
     "author": "Martin Simard <martin.simard@dti.ulaval.ca>",
     "private": false,
@@ -63,7 +63,6 @@
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
-        "meta-generator": "^1.0.0",
         "@storybook/addon-a11y": "^5.1.8",
         "@storybook/addon-actions": "^5.1.8",
         "@storybook/addon-backgrounds": "^5.1.8",
@@ -107,6 +106,7 @@
         "jest-html-reporter": "^2.4.4",
         "jest-junit": "^3.6.0",
         "jest-serializer-vue": "^2.0.2",
+        "meta-generator": "^1.0.1",
         "node-html-parser": "^1.1.10",
         "node-sass": "^4.11.0",
         "postcss-loader": "^3.0.0",
