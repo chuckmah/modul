@@ -27,7 +27,7 @@
         "lint": "tsc --noEmit && tslint --project tsconfig.json -s ../../node_modules/custom-tslint-formatters/formatters -t grouped "
     },
     "dependencies": {
-        "@ulaval/modul-components": "^1.0.0-beta.116"
+        "@ulaval/modul-components": "1.0.0-beta.110"
     },
     "devDependencies": {
         "@babel/core": "^7.3.4",
