@@ -1,6 +1,6 @@
 {
     "name": "@ulaval/modul-website",
-    "version": "2.0.0",
+    "version": "2.0.1-alpha.0",
     "description": "modUL web application.",
     "contributors": [
         "Charles Maheu <charles.maheu@dti.ulaval.ca>",
@@ -18,9 +18,9 @@
         "print_version_nx": "echo $npm_package_version"
     },
     "dependencies": {
+        "@chuckmah/modul-form": "^1.0.0-beta.5",
         "@mojotech/json-type-validation": "^3.1.0",
-        "@ulaval/modul-components": "1.0.0-beta.116",
-        "@chuckmah/modul-form": "1.0.0-beta.4",
+        "@ulaval/modul-components": "^1.0.0-beta.117",
         "@ulaval/modul-vuex": "^1.0.1",
         "highlight.js": "^9.12.0",
         "markdown-it": "^8.4.0",
