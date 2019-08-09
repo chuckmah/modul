@@ -1,12 +1,15 @@
 
-import { array, boolean, constant, Decoder, object, oneOf, optional } from '@mojotech/json-type-validation';
+import { array, boolean, constant, Decoder, object, oneOf, optional, string } from '@mojotech/json-type-validation';
 
-export const componentsRequiredContext: any = require.context('./components', true, /\.meta.json$/);
+export const componentsFrRequiredContext: any = require.context('./components', true, /\.meta.fr.json$/);
 
 export interface ComponentMeta {
+    name: string;
     category: string;
+    url: string;
     type: string;
     beta: boolean;
+    visible: boolean;
     components?: any[];
 }
 
@@ -25,17 +28,20 @@ const typeDecoder: Decoder<string> = oneOf(
 );
 
 const componentMetaDecoder: Decoder<ComponentMeta> = object({
+    name: string(),
+    url: string(),
     category: catogoryDecoder,
     type: typeDecoder,
     beta: boolean(),
+    visible: boolean(),
     components: optional(array())
 });
 
 export function loadComponentMeta(): ComponentMeta[] {
 
-    return componentsRequiredContext.keys().map((filename) => {
+    return componentsFrRequiredContext.keys().map((filename) => {
 
-        let componentMeta: any = componentsRequiredContext(filename);
+        let componentMeta: any = componentsFrRequiredContext(filename);
         try {
             componentMetaDecoder.runWithException(componentMeta);
         } catch (err) {

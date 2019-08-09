@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as _ from 'lodash';
 import * as parser from 'node-html-parser';
 import Project, { ClassDeclaration, ClassInstanceMemberTypes, ClassInstancePropertyTypes, Decorator, Expression, LanguageService, MethodDeclaration, ObjectLiteralExpression, ParameterDeclaration, PropertyAssignment, SourceFile, StringLiteral, SyntaxKind, Type, TypeChecker } from 'ts-morph';
 import { Meta, MetaComponent, MetaEvent, MetaProps, MetaSlot } from './index';
@@ -25,19 +26,20 @@ export class MetaGenerator {
     private typeChecker: TypeChecker;
     private languageService: LanguageService;
 
-    constructor() {
+    constructor(projetFilePath: string) {
 
         this.project = new Project({
-            tsConfigFilePath: './tsconfig.meta.json',
+            tsConfigFilePath: projetFilePath,
             addFilesFromTsConfig: true
         });
 
-        // use this for test a specific file
+        // uncomment this for test a specific file
+
         // this.project = new Project({
-        //     tsConfigFilePath: './tsconfig.meta.json',
+        //     tsConfigFilePath: projetFilePath,
         //     addFilesFromTsConfig: false
         // });
-        // this.project.addExistingSourceFile('src/components/datefields/datefields.ts');
+        // this.project.addExistingSourceFile('src/components/button/button.ts');
 
         this.typeChecker = this.project.getTypeChecker();
         this.languageService = this.project.getLanguageService();
@@ -56,7 +58,12 @@ export class MetaGenerator {
 
                 // If the class has the @Component decorator
                 if (componentDecorator) {
-                    output.components.push(this.generateComponentMeta(classDeclaration, this.getTemplateAsString(`${sourceFile.getFilePath().slice(0, -3)}.html`)));
+
+                    const templateString: string = this.readFileAsString(`${sourceFile.getFilePath().slice(0, -3)}.html`);
+                    const apiOverrideString: string = this.readFileAsString(`${sourceFile.getFilePath().slice(0, -3)}.api.fr.json`);
+                    const meta: MetaComponent = this.generateComponentMeta(classDeclaration, templateString, apiOverrideString);
+
+                    output.components.push(meta);
                 }
 
             });
@@ -65,7 +72,13 @@ export class MetaGenerator {
         return output;
     }
 
-    private getTemplateAsString(filePath: string): string {
+    private applyMetaOverrides(meta: MetaComponent, metaOverrides: MetaComponent): void {
+
+        // merge object using https://lodash.com/docs/4.17.11#merge
+        _.merge(meta, metaOverrides);
+    }
+
+    private readFileAsString(filePath: string): string {
         // get the template
         let template: string = '';
         try {
@@ -80,10 +93,10 @@ export class MetaGenerator {
     /**
      *
      */
-    private generateComponentMeta(classDeclaration: ClassDeclaration, template: string): MetaComponent {
+    private generateComponentMeta(classDeclaration: ClassDeclaration, template: string, apiOverrideString: string): MetaComponent {
         // extract component name
         let output: MetaComponent = {
-            componentName: classDeclaration.getName()!
+            componentName: _.kebabCase(classDeclaration.getName())
         };
 
         let componentDecorator: Decorator = classDeclaration.getDecorator(COMPONENT_DECORATOR_NAME)!;
@@ -94,7 +107,16 @@ export class MetaGenerator {
 
         output.events = this.extractMetaEventFromClass(classDeclaration);
 
-        output.slots = template ? this.extractMetaSlotFromTemplate(template) : [];
+        if (template) {
+            output.slots = this.extractMetaSlotFromTemplate(template);
+        }
+
+        if (apiOverrideString) {
+
+            const metaOverrides: MetaComponent = JSON.parse(apiOverrideString) as MetaComponent;
+            this.applyMetaOverrides(output, metaOverrides);
+        }
+
 
         return output;
     }
@@ -117,7 +139,9 @@ export class MetaGenerator {
         return result;
     }
 
-    private extractMetaPropsFromClass(classDeclaration: ClassDeclaration): MetaProps[] {
+    private extractMetaPropsFromClass(classDeclaration: ClassDeclaration): { [k: string]: MetaProps } {
+
+        let metaProps: { [k: string]: MetaProps } = {};
 
         // Get a list of all instance properties annotated @props
         let propertyDeclarationWithProps: ClassInstancePropertyTypes[] = classDeclaration.getInstanceProperties().filter((classInstancePropertyTypes: ClassInstancePropertyTypes) => {
@@ -125,12 +149,16 @@ export class MetaGenerator {
         });
 
         // extract name and type from prop.
-        return propertyDeclarationWithProps.map((classInstancePropertyTypes: ClassInstancePropertyTypes) => {
-            return this.extractMetaPropFromPropertyTypes(classInstancePropertyTypes);
-        }, this);
+        propertyDeclarationWithProps.forEach((classInstancePropertyTypes: ClassInstancePropertyTypes) => {
+            metaProps[classInstancePropertyTypes.getName()!] = this.extractMetaPropFromPropertyTypes(classInstancePropertyTypes);
+        });
+
+        return metaProps;
     }
 
-    private extractMetaEventFromClass(classDeclaration: ClassDeclaration): MetaEvent[] {
+    private extractMetaEventFromClass(classDeclaration: ClassDeclaration): { [k: string]: MetaEvent } {
+
+        let metaEvents: { [k: string]: MetaEvent } = {};
         // Get a list of all annotated methods @Emit
         let propertyDeclarationWithEmit: ClassInstanceMemberTypes[] = classDeclaration.getInstanceMembers().filter((instanceMember: ClassInstanceMemberTypes) => {
             if (instanceMember instanceof MethodDeclaration) {
@@ -140,32 +168,29 @@ export class MetaGenerator {
         });
 
         // extract name and type from prop.
-        return propertyDeclarationWithEmit.map((classInstanceMemberTypes: ClassInstanceMemberTypes) => {
-
+        propertyDeclarationWithEmit.forEach((classInstanceMemberTypes: ClassInstanceMemberTypes) => {
             let methodDeclaration: MethodDeclaration = classInstanceMemberTypes as MethodDeclaration;
+            metaEvents[this.extractEventNameFromPropertyTypes(methodDeclaration)] = this.extractMetaEventFromPropertyTypes(methodDeclaration);
+        });
 
-            return this.extractMetaEventFromPropertyTypes(methodDeclaration);
-        }, this);
+        return metaEvents;
     }
 
-    private extractMetaSlotFromTemplate(template: string): MetaSlot[] {
+    private extractMetaSlotFromTemplate(template: string): { [k: string]: MetaSlot } {
 
-        let metaSlots: MetaSlot[] = [];
+        let metaSlots: { [k: string]: MetaSlot } = {};
         if (template) {
             const root: any = parser.parse(template);
-            metaSlots = root.querySelectorAll('slot').map((slot: parser.HTMLElement) => {
+            root.querySelectorAll('slot').forEach((slot: parser.HTMLElement) => {
 
                 if (slot.attributes.name) {
                     // named slot
-                    return {
-                        name: slot.attributes.name,
+                    metaSlots[slot.attributes.name] = {
                         isDefault: false
                     };
                 } else {
-
                     // default slot
-                    return {
-                        name: 'default',
+                    metaSlots['default'] = {
                         isDefault: true
                     };
                 }
@@ -177,11 +202,10 @@ export class MetaGenerator {
     }
 
     private extractMetaPropFromPropertyTypes(classInstancePropertyTypes: ClassInstancePropertyTypes): MetaProps {
-        let name: string = classInstancePropertyTypes.getName()!;
+
         let type: Type = classInstancePropertyTypes.getType();
 
         let output: MetaProps = {
-            name: name,
             type: type.getNonNullableType().getText().split('.').pop()!,
             optional: type.isNullable()
         };
@@ -203,20 +227,21 @@ export class MetaGenerator {
         return output;
     }
 
-    private extractMetaEventFromPropertyTypes(methodDeclaration: MethodDeclaration): MetaEvent {
-        let output: MetaEvent = {
-            name: ''
-        };
-
-        let metaDecorator: Decorator = methodDeclaration.getDecorator(EMIT_DECORATOR_NAME)!;
-
+    private extractEventNameFromPropertyTypes(methodDeclaration: MethodDeclaration): string {
         // extract the name of event.
+        let metaDecorator: Decorator = methodDeclaration.getDecorator(EMIT_DECORATOR_NAME)!;
         if (metaDecorator.isDecoratorFactory() && metaDecorator.getArguments().length === 1) {
             let stringLitteral: StringLiteral = metaDecorator.getArguments()[0] as StringLiteral;
-            output.name = stringLitteral.getLiteralValue();
+            return stringLitteral.getLiteralValue();
         } else {
             throw new Error(`Problem while extracting metadata for method ${JSON.stringify(methodDeclaration.getText())}`);
         }
+    }
+
+    private extractMetaEventFromPropertyTypes(methodDeclaration: MethodDeclaration): MetaEvent {
+
+        let output: MetaEvent = {};
+
 
         // extract methods arguments
         if (methodDeclaration.getParameters() && methodDeclaration.getParameters().length > 0) {

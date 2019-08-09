@@ -1,22 +1,36 @@
-import { Meta, MetaService } from 'meta-generator/dist';
+import { Meta } from 'meta-generator/dist';
+import { ComponentMeta } from './content/components.meta.loader';
 
-class ModulMeta {
+export interface ComponentState {
+    [k: string]: ComponentMeta[];
+}
 
-    private _modulComponentMeta: MetaService;
+export class ModulMeta {
 
-    constructor() {
-        this._modulComponentMeta = new MetaService(require('@ulaval/modul-components/dist/modul-meta.json') as Meta);
-    }
+    private _componentState: ComponentState;
 
-    get modulComponentMeta(): MetaService {
-        return this._modulComponentMeta;
+    constructor(public componentMetas: ComponentMeta[], public modulMeta: Meta) {
+        this._componentState = this.buildComponentState(componentMetas);
     }
 
     get version(): string {
-        return this._modulComponentMeta.meta.modulVersion;
+        return this.modulMeta.packageVersion;
     }
 
-}
-const modulMeta: ModulMeta = new ModulMeta();
+    get componentState(): ComponentState {
+        return this._componentState;
+    }
 
-export default modulMeta;
+    private buildComponentState(componentMetas: ComponentMeta[]): ComponentState {
+        const result: ComponentState = {};
+        componentMetas.forEach((componentMeta: ComponentMeta) => {
+
+            if (result[componentMeta.category] && result[componentMeta.category].length > 0) {
+                result[componentMeta.category].concat(componentMeta);
+            } else {
+                result[componentMeta.category] = [componentMeta];
+            }
+        });
+        return result;
+    }
+}

@@ -1,4 +1,4 @@
-import modulMeta from '@/modul-meta';
+
 import { ROUTER_COMPONENTS, ROUTER_PHILOSOPHY, ROUTER_STANDARDS } from '@/router';
 import IconButtonPlugin from '@ulaval/modul-components/dist/components/icon-button/icon-button';
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
@@ -26,14 +26,20 @@ export class MWHeader extends ModulWebsite {
 
     openSearch: boolean = false;
     openMegaMenu: boolean = false;
+    megaMenuType: string = '';
 
     @Emit('search')
     private onSearch(): void {
         this.openSearch = !this.openSearch;
     }
 
-    public toggleMegaMenu(): void {
-        this.openMegaMenu = !this.openMegaMenu;
+    public toggleMegaMenu(type: string): void {
+        if (this.megaMenuType === type) {
+            this.openMegaMenu = !this.openMegaMenu;
+        } else {
+            this.megaMenuType = type;
+            this.openMegaMenu = true;
+        }
     }
 
     get toggleSearch(): boolean {
@@ -41,7 +47,7 @@ export class MWHeader extends ModulWebsite {
     }
 
     get modulVersion(): string {
-        return modulMeta.version;
+        return this.$meta.version;
     }
 
     private navigateTo(event: MouseEvent, menuSection: string) {

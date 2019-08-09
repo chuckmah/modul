@@ -1,36 +1,37 @@
 export interface Meta {
-    modulVersion?: string;
+    packageVersion?: string;
     components: MetaComponent[];
 }
 
 export interface MetaComponent {
     componentName: string;
-    props?: MetaProps[];
-    events?: MetaEvent[];
+    props?: { [k: string]: MetaProps };
+    events?: { [k: string]: MetaEvent };
+    slots?: { [k: string]: MetaSlot };
     mixins?: string[];
-    slots?: MetaSlot[];
 }
+
 export interface MetaArgument {
     name: string;
     type: string;
 }
 
 export interface MetaEvent {
-    name: string;
     arguments?: MetaArgument[];
+    description?: string;
 }
 
 export interface MetaProps {
-    name: string;
     optional: boolean;
     type: string;
     values?: string[];
     default?: string;
+    description?: string;
 }
 
 export interface MetaSlot {
-    name?: string;
     isDefault: boolean;
+    description?: string;
 }
 
 export class MetaService {

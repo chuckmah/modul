@@ -1,6 +1,6 @@
 import Meta, { ComponentAttribute } from '@ulaval/modul-components/dist/meta/meta';
 import Component from 'vue-class-component';
-import { ComponentMetaEx, ModulComponentStatus } from '../../meta/meta-all';
+import { ComponentMetaEx } from '../../meta/meta-all';
 import { GET_COMPONENT } from '../../store/modules/components-old/getters';
 import { ModulWebsite } from '../modul-website';
 import WithRender from './component-properties.html?style=./component-properties.scss';
@@ -66,6 +66,7 @@ export class ComponentProperties extends ModulWebsite {
     }
 
     private get showDescription(): boolean {
-        return (process.env && (process.env.NODE_ENV).dev) || this.component['status'] == ModulComponentStatus.Production;
+        return true;
+        //   return (process.env && (process.env.NODE_ENV).dev) || this.component['status'] == ModulComponentStatus.Production;
     }
 }

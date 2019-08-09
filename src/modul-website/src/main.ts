@@ -8,6 +8,7 @@ import Vuex, { Store } from 'vuex';
 import Modul from './components/modul/modul';
 import WebsiteComponentsPlugin from './components/website-components-plugins';
 import ModulPlugin from './modul';
+import { ModulMeta } from './modul-meta';
 import routerFactory, { ModulRouter } from './router';
 import { ComponentsModulePlugin } from './store/modules/components/components-module';
 import './styles/main.scss';
@@ -38,7 +39,7 @@ if (curLang === FRENCH) {
 langPromise.then((langPlugin: any) => {
     Vue.use(langPlugin.default);
 
-    let modulRouter: ModulRouter = routerFactory();
+    let modulRouter: ModulRouter = routerFactory(langPlugin.meta as ModulMeta);
     let router: VueRouter = modulRouter.router;
 
     const vue = new Vue({

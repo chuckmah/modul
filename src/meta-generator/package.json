@@ -19,6 +19,7 @@
     },
     "devDependencies": {
         "@types/jest": "^23.3.14",
+        "@types/lodash": "^4.14.136",
         "@types/node": "^10.12.20",
         "@types/webpack-env": "^1.13.6",
         "copyfiles": "^1.2.0",
@@ -28,5 +29,8 @@
         "tslint-config-standard": "^8.0.1",
         "typescript": "^3.2.2",
         "typescript-tslint-plugin": "^0.3.0"
+    },
+    "dependencies": {
+        "lodash": "^4.17.15"
     }
 }

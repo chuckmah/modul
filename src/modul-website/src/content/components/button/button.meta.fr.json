@@ -1,8 +1,11 @@
 {
+    "name": "Bouton",
+    "url": "bouton",
     "category": "button",
     "type": "components",
     "beta": false,
+    "visible": true,
     "components": [
-        "MButton"
+        "m-button"
     ]
 }

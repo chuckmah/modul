@@ -41,9 +41,7 @@ export const getPageAction: Action<PagesState, PagesState> = (context: ActionCon
 export const PAGE_SUMMARY_GET: string = 'A_PAGE_SUMMARY_GET';
 export const getPageSummaryAction: Action<PagesState, PagesState> = (context: ActionContext<PagesState, PagesState>, markdown: MarkdownPayload) => {
     if (context.state.pageSummaryMarkdown == null && context.state.page) {
-        let url: string = process.env && (process.env.NODE_ENV).dev ?
-            `${__webpack_public_path__}app/content/${context.state.page}/${context.state.page}.summary.fr.md` :
-            `${__webpack_public_path__}assets/md/content/${context.state.page}/${context.state.page}.summary.fr.md`;
+        let url = `${__webpack_public_path__}assets/md/content/${context.state.page}/${context.state.page}.summary.fr.md`;
         markdown.restAdapter.execute({ method: 'get', rawUrl: url }).then((md) => {
             context.commit(Mutations.PAGE_SUMMARY_GET_SUCCESS, (md as any).data);
         });
@@ -67,9 +65,7 @@ export const getTabAction: Action<PagesState, PagesState> = (context: ActionCont
 export const PAGE_TAB_GET: string = 'A_PAGE_TAB_GET';
 export const getPageTabAction: Action<PagesState, PagesState> = (context: ActionContext<PagesState, PagesState>, markdown: MarkdownPayload) => {
     if (context.state.tabMarkdown == null && context.state.tab) {
-        let url: string = process.env && (process.env.NODE_ENV).dev ?
-            `${__webpack_public_path__}app/content/${context.state.page}/${context.state.page}.${context.state.tab}.fr.md` :
-            `${__webpack_public_path__}assets/md/content/${context.state.page}/${context.state.page}.${context.state.tab}.fr.md`;
+        let url: string = `${__webpack_public_path__}assets/md/content/${context.state.page}/${context.state.page}.${context.state.tab}.fr.md`;
         markdown.restAdapter.execute({ method: 'get', rawUrl: url }).then((md) => {
             context.commit(Mutations.PAGE_TAB_GET_SUCCESS, (md as any).data);
         });

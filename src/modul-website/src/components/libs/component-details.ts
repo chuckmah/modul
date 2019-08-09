@@ -2,7 +2,7 @@ import { ComponentMeta } from '@ulaval/modul-components/dist/meta/meta';
 import Component from 'vue-class-component';
 import { Watch } from 'vue-property-decorator';
 import { ModulComponentStatus } from '../../meta/meta-all';
-import { ROUTER_EVENTS, ROUTER_OVERVIEW, ROUTER_PROPERTIES, ROUTER_SLOTS } from '../../router';
+// import { ROUTER_EVENTS, ROUTER_OVERVIEW, ROUTER_PROPERTIES, ROUTER_SLOTS } from '../../router';
 import * as ComponentsActions from '../../store/modules/components-old/actions';
 import * as ComponentsGetters from '../../store/modules/components-old/getters';
 import { ModulWebsite } from '../modul-website';
@@ -26,17 +26,17 @@ export class ComponentDetails extends ModulWebsite {
     }
 
     private get currentTab(): string {
-        switch (this.$route.meta.type) {
-            case ROUTER_PROPERTIES:
-                return 'properties';
-            case ROUTER_EVENTS:
-                return 'events';
-            case ROUTER_SLOTS:
-                return 'slots';
-            default:
-                return 'overview';
-        }
-
+        // switch (this.$route.meta.type) {
+        //     case ROUTER_PROPERTIES:
+        //         return 'properties';
+        //     case ROUTER_EVENTS:
+        //         return 'events';
+        //     case ROUTER_SLOTS:
+        //         return 'slots';
+        //     default:
+        //         return 'overview';
+        // }
+        return '';
     }
 
     private get codePreviewOpen(): boolean {
@@ -57,17 +57,21 @@ export class ComponentDetails extends ModulWebsite {
     }
 
     private get properties(): string {
-        return this.$routerIndex.for(ROUTER_PROPERTIES, _ => this.component.tag);
+        return '';
+        //    return this.$routerIndex.for(ROUTER_PROPERTIES, _ => this.component.tag);
     }
     private get slots(): string {
-        return this.$routerIndex.for(ROUTER_SLOTS, () => this.component.tag);
+        return '';
+        //   return this.$routerIndex.for(ROUTER_SLOTS, () => this.component.tag);
     }
     private get events(): string {
-        return this.$routerIndex.for(ROUTER_EVENTS, () => this.component.tag);
+        return '';
+        //      return this.$routerIndex.for(ROUTER_EVENTS, () => this.component.tag);
     }
 
     private get overview(): string {
-        return this.$routerIndex.for(ROUTER_OVERVIEW, () => this.component.tag);
+        return '';
+        //        return this.$routerIndex.for(ROUTER_OVERVIEW, () => this.component.tag);
     }
 
     private isProduction(status): boolean {

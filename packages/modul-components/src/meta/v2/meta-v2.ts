@@ -33,7 +33,7 @@ export interface MetaSlot {
     isDefault: boolean;
 }
 
-export class Meta {
+export class MetaV2 {
     constructor(private _meta: Meta) { }
 
     get meta(): Meta {

@@ -1,6 +1,7 @@
 <div class="mw-header">
 
-    <mw-mega-menu :open.sync="openMegaMenu"></mw-mega-menu>
+    <mw-mega-menu :open.sync="openMegaMenu"
+                  :type="megaMenuType"></mw-mega-menu>
 
     <div class="mw-header__body">
 
@@ -25,14 +26,14 @@
                     </li>
                     <li>
                         <a href
-                           @click.prevent="navigateTo($event, 'components')"
+                           @click.prevent="toggleMegaMenu('components')"
                            class="mw-header__link">
                             <m-i18n k="modul:components"></m-i18n>
                         </a>
                     </li>
                     <li>
                         <a href
-                           @click.prevent="toggleMegaMenu"
+                           @click.prevent="toggleMegaMenu('standards')"
                            class="mw-header__link">
                             <m-i18n k="modul:standards"></m-i18n>
                         </a>

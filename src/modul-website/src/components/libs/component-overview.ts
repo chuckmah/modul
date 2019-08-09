@@ -37,6 +37,6 @@ export class ComponentOverview extends ModulWebsite {
     }
 
     private get isProd(): boolean {
-        return (process.env && (process.env.NODE_ENV).prod);
+        return (process.env && process.env.NODE_ENV === 'prod');
     }
 }

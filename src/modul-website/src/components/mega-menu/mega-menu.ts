@@ -31,7 +31,8 @@ export class MWMegaMenu extends ModulWebsite {
     private menuLevelOne: boolean = true;
 
     @Prop()
-    public list: [];
+    public type: string;
+
     @Prop({ default: false })
     public open: boolean;
 
@@ -92,7 +93,7 @@ export class MWMegaMenu extends ModulWebsite {
     }
 
     calise() {
-        console.log('calise');
+        console.log('calise'); // calise???
 
     }
 

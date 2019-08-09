@@ -18,7 +18,6 @@
         "print_version_nx": "echo $npm_package_version"
     },
     "dependencies": {
-        "@chuckmah/modul-form": "^1.0.0-beta.5",
         "@mojotech/json-type-validation": "^3.1.0",
         "@ulaval/modul-components": "^1.0.0-beta.117",
         "@ulaval/modul-vuex": "^1.0.1",

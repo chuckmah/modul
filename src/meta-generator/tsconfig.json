@@ -17,11 +17,6 @@
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "strictNullChecks": true,
-        "types": [
-            "node",
-            "jest",
-            "webpack-env"
-        ],
         "typeRoots": [
             "node_modules/@types"
         ]

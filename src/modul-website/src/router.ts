@@ -3,11 +3,15 @@ import Vue from 'vue';
 import Router, { RouteConfig } from 'vue-router';
 import { VueRouter } from 'vue-router/types/router';
 import { MIconGallery } from './components/icon-gallery/icon-gallery';
+import { ComponentMeta } from './content/components.meta.loader';
+import { ModulMeta } from './modul-meta';
 import { MWComponentsPage } from './pages/components/components';
 import { MWHomePage } from './pages/home/home';
 import { MWPhilosophyPage } from './pages/philosophy/philosophy';
 import { MWStandardsPage } from './pages/standards/standards';
 import { MWStandardsUiIconographyPage } from './pages/standards/visual-standards/visual-standards-iconography/standards-ui-iconography';
+import { MWComponentCode } from './pages/templates/component-code/component-code';
+import { MWComponentOverview } from './pages/templates/component-overview/component-overview';
 import { MWMarkdownPage } from './pages/templates/markdown-page/markdown-page';
 
 declare module 'vue/types/vue' {
@@ -17,7 +21,6 @@ declare module 'vue/types/vue' {
 }
 
 Vue.use(Router);
-
 export interface RoutePath {
     path: string;
     hasParent: boolean;
@@ -64,10 +67,8 @@ export interface ModulRouter {
 
 // must match router.<lang>.json
 export const ROUTER_COMPONENTS: string = 'router:components';
-export const ROUTER_PROPERTIES: string = 'router:properties';
-export const ROUTER_SLOTS: string = 'router:slots';
-export const ROUTER_EVENTS: string = 'router:events';
 export const ROUTER_OVERVIEW: string = 'router:overview';
+export const ROUTER_CODE: string = 'router:code';
 export const ROUTER_PHILOSOPHY: string = 'router:philosophy';
 export const ROUTER_STANDARDS: string = 'router:standards';
 
@@ -95,24 +96,17 @@ export const ROUTER_STANDARDS_ACCESSIBILITY_CHEATSHEET: string = 'router:accessi
 export const ROUTER_STANDARDS_ACCESSIBILITY_IMPLEMENTATION: string = 'router:accessibility-standards-implementation';
 export const ROUTER_STANDARDS_ACCESSIBILITY_WHY: string = 'router:accessibility-standards-why';
 
-type RouterFactoryFn = () => ModulRouter;
+type RouterFactoryFn = (meta: ModulMeta) => ModulRouter;
 type PushRouteFn = (key: string, routesConfig: RouteConfig[], config: RouteConfig, staticParent?: string) => RouteConfig;
 
-const routerFactory: RouterFactoryFn = () => {
+const routerFactory: RouterFactoryFn = (meta: ModulMeta) => {
 
     const modulRoutes: RouteConfig[] = [];
-    const categoryRoutes: RouteConfig[] = [];
-
-    const componentRoutes: RouteConfig[] = [];
-    const standardsRoutes: RouteConfig[] = [];
 
     let i18n: Messages = Vue.prototype.$i18n;
     let componentsRoute: string = i18n.translate(ROUTER_COMPONENTS);
-    let propertiesRoute: string = i18n.translate(ROUTER_PROPERTIES);
-    let slotsRoute: string = i18n.translate(ROUTER_SLOTS);
-    let eventsRoute: string = i18n.translate(ROUTER_EVENTS);
-
     let overviewRoute: string = i18n.translate(ROUTER_OVERVIEW);
+    let CodeRoute: string = i18n.translate(ROUTER_CODE);
 
     let routeIndex: RoutePathMap = {};
 
@@ -132,81 +126,40 @@ const routerFactory: RouterFactoryFn = () => {
         return config;
     };
 
-    // MetaAll.getCategories().forEach(category => {
-    //     let categoryRoute: string = i18n.translate(category + '-route');
-
-    //     pushRoute(category, categoryRoutes, {
-    //         path: categoryRoute,
-    //         meta: { page: category },
-    //         component: CategoryList
-    //     }, ROUTER_COMPONENTS);
-
-    //     // /all is not used, but serves as parent for all components (master/detail view)
-    //     // /category (root level) displays another view
-    //     pushRoute(category + '-all', modulRoutes, {
-    //         path: `/${componentsRoute}/${categoryRoute}/all`,
-    //         component: ComponentViewer,
-    //         children: componentRoutes
-    //     });
-
-    //     MetaAll.getMetaByCategory(category).forEach(componentMeta => {
-    //         let config: RouteConfig = pushRoute(componentMeta.tag, componentRoutes, {
-    //             path: `/${componentsRoute}/${categoryRoute}/${componentMeta.tag}`,
-    //             meta: { page: componentMeta.tag },
-    //             component: ComponentDetails
-    //         });
-    //         config.children = [];
-    //         pushRoute(ROUTER_SLOTS, config.children, {
-    //             path: slotsRoute,
-    //             meta: {
-    //                 page: componentMeta.tag,
-    //                 type: ROUTER_SLOTS
-    //             },
-    //             component: ComponentSlots
-    //         });
-    //         pushRoute(ROUTER_EVENTS, config.children, {
-    //             path: eventsRoute,
-    //             meta: {
-    //                 page: componentMeta.tag,
-    //                 type: ROUTER_EVENTS
-    //             },
-    //             component: ComponentEvents
-    //         });
-    //         pushRoute(ROUTER_PROPERTIES, config.children, {
-    //             path: propertiesRoute,
-    //             meta: {
-    //                 page: componentMeta.tag,
-    //                 type: ROUTER_PROPERTIES
-    //             },
-    //             component: ComponentProperties
-    //         });
-    //         pushRoute(ROUTER_OVERVIEW, config.children, {
-    //             path: overviewRoute,
-    //             meta: {
-    //                 page: componentMeta.tag,
-    //                 type: ROUTER_OVERVIEW
-    //             },
-    //             component: ComponentOverview
-    //         });
-    //         config.children.push({
-    //             path: '',
-    //             redirect: overviewRoute
-    //         });
-    //     });
-    // });
-
     pushRoute('/', modulRoutes, {
         path: '/',
         component: MWHomePage
     });
-    pushRoute(ROUTER_COMPONENTS, modulRoutes, {
-        path: '/' + componentsRoute,
-        component: MWComponentsPage
-    });
+
     pushRoute(ROUTER_PHILOSOPHY, modulRoutes, {
         path: '/' + i18n.translate(ROUTER_PHILOSOPHY),
         component: MWPhilosophyPage
     });
+
+    Object.keys(meta.componentState).forEach(category => {
+        let categoryRoute: string = i18n.translate(`categories:${category}-route`);
+        meta.componentState[category].forEach((components: ComponentMeta) => {
+            let config: RouteConfig = pushRoute(components.url, modulRoutes, {
+                path: `/${componentsRoute}/${categoryRoute}/${components.url}`,
+                meta: { name: components.name },
+                component: MWComponentsPage
+            });
+            config.children = [];
+            pushRoute(ROUTER_OVERVIEW, config.children, {
+                path: overviewRoute,
+                component: MWComponentOverview
+            });
+            pushRoute(ROUTER_CODE, config.children, {
+                path: CodeRoute,
+                component: MWComponentCode
+            });
+            config.children.push({
+                path: '',
+                redirect: overviewRoute
+            });
+        });
+    });
+
     pushRoute(ROUTER_STANDARDS, modulRoutes, {
         path: '/' + i18n.translate(ROUTER_STANDARDS),
         component: MWStandardsPage,
