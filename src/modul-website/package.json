@@ -8,11 +8,10 @@
     ],
     "private": true,
     "scripts": {
-        "dev": "npm run mdToAssets && vue-cli-service serve",
-        "build": "npm run mdToAssets && vue-cli-service build",
+        "dev": "vue-cli-service serve",
+        "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "stylelint": "stylelint \"src/**/*.css\" \"src/**/*.scss\" --config conf/stylelint.json",
-        "mdToAssets": "rimraf public/assets/md && copyfiles -u 1 \"./src/content/**/*.md\" public/assets/md",
         "prod": "http-server dist -p 8083 -g -o",
         "print_version_win": "echo %npm_package_version%",
         "print_version_nx": "echo $npm_package_version"

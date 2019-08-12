@@ -1,4 +1,4 @@
-import { Meta } from 'meta-generator/dist';
+import { Meta, MetaService } from 'meta-generator/dist';
 import { ComponentMeta } from './content/components.meta.loader';
 
 export interface ComponentState {
@@ -8,9 +8,11 @@ export interface ComponentState {
 export class ModulMeta {
 
     private _componentState: ComponentState;
+    private _metaService: MetaService;
 
-    constructor(public componentMetas: ComponentMeta[], public modulMeta: Meta) {
+    constructor(private componentMetas: ComponentMeta[], private modulMeta: Meta) {
         this._componentState = this.buildComponentState(componentMetas);
+        this._metaService = new MetaService(modulMeta);
     }
 
     get version(): string {
@@ -21,15 +23,21 @@ export class ModulMeta {
         return this._componentState;
     }
 
+    get metaService(): MetaService {
+        return this._metaService;
+    }
+
     private buildComponentState(componentMetas: ComponentMeta[]): ComponentState {
         const result: ComponentState = {};
         componentMetas.forEach((componentMeta: ComponentMeta) => {
-
-            if (result[componentMeta.category] && result[componentMeta.category].length > 0) {
-                result[componentMeta.category].concat(componentMeta);
-            } else {
-                result[componentMeta.category] = [componentMeta];
+            if (componentMeta.visible) {
+                if (result[componentMeta.category] && result[componentMeta.category].length > 0) {
+                    result[componentMeta.category].concat(componentMeta);
+                } else {
+                    result[componentMeta.category] = [componentMeta];
+                }
             }
+
         });
         return result;
     }

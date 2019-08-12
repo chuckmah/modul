@@ -22,6 +22,10 @@
         "accessibility-standards": "Normes d'accessibilité",
         "accessibility-standards-cheatsheet": "Aide-mémoire",
         "accessibility-standards-implementation": "Implémentation",
-        "accessibility-standards-why": "Pourquoi l'accessibilité?"
+        "accessibility-standards-why": "Pourquoi l'accessibilité?",
+        "components-ui": "Composants d'interface",
+        "overview": "portrait",
+        "code": "code",
+        "beta": "beta"
     }
 }

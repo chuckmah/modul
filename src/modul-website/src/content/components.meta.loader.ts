@@ -1,9 +1,11 @@
 
 import { array, boolean, constant, Decoder, object, oneOf, optional, string } from '@mojotech/json-type-validation';
 
-export const componentsFrRequiredContext: any = require.context('./components', true, /\.meta.fr.json$/);
+export const componentsFrRequiredContext: any = require.context('./../../public/content/components', true, /\.meta.fr.json$/);
 
 export interface ComponentMeta {
+    overview: string;
+    preview: string;
     name: string;
     category: string;
     url: string;
@@ -28,6 +30,8 @@ const typeDecoder: Decoder<string> = oneOf(
 );
 
 const componentMetaDecoder: Decoder<ComponentMeta> = object({
+    preview: optional(string()),
+    overview: optional(string()),
     name: string(),
     url: string(),
     category: catogoryDecoder,
@@ -40,8 +44,8 @@ const componentMetaDecoder: Decoder<ComponentMeta> = object({
 export function loadComponentMeta(): ComponentMeta[] {
 
     return componentsFrRequiredContext.keys().map((filename) => {
-
         let componentMeta: any = componentsFrRequiredContext(filename);
+        componentMeta.filename = filename;
         try {
             componentMetaDecoder.runWithException(componentMeta);
         } catch (err) {

@@ -1,6 +1,8 @@
 {
     "router": {
         "components": "composants",
+        "components-ui": "interface",
+        "components-utils": "utilitaires",
         "overview": "portrait",
         "code": "code",
         "philosophy": "philosophie",

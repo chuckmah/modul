@@ -14,6 +14,10 @@ $modul-menu-transition-duration: 0.7s;
         column-gap: 0;
     }
 
+    h2 {
+        margin: 0;
+    }
+
     &__list {
         list-style: none;
         break-inside: avoid;
@@ -36,7 +40,7 @@ $modul-menu-transition-duration: 0.7s;
         border-left: 2px solid transparent;
         padding: $m-padding--s $m-padding;
         background-color: transparent;
-        color: $modul-color--grey-dark;
+        color: #09f;
         text-decoration: none;
         outline: none;
 

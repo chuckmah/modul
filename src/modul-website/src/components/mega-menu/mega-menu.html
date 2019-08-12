@@ -4,20 +4,23 @@
              v-if="isMqMinS">
             <nav class="mw-mega-menu__list"
                  v-for="category in categoriesComponent"
+                 :key="category.id"
                  v-if="type == 'components'">
-                <h2 class="mw-mega-menu__title modul-u--h2 modul-u--highlighted-title-link">
-                    <!-- <router-link :to="getRouterIndex(category.id)"
-                                 tabindex="0">--> <span>{{category.text}}</span><!-- </router-link> -->
+                <h2 class=" mw-mega-menu__title modul-u--h2 mw-u--highlighted-title-link">
+                    <a tabindex="-1"> <span>{{category.text}}</span> </a>
                 </h2>
                 <ul>
-                    <li v-for="component in getCategoryComponents(category.id)">
+                    <li v-for="component in getCategoryComponents(category.id)"
+                        @click.prevent="close()">
                         <router-link :to="getRouterIndex(component.url)"
                                      tag="a"
                                      class="mw-mega-menu__link">
                             <span class="mw-mega-menu__wrapper">
                                 <m-i18n :k="component.name"
                                         class="mw-mega-menu__label"></m-i18n>&nbsp;<span v-if="component.beta"
-                                      class="mw-mega-menu__beta-tag">{{ beta }}</span>
+                                      class="mw-mega-menu__beta-tag">
+                                    <m-i18n k="website:beta"></m-i18n>
+                                </span>
                             </span>
                             <!-- <span class=" mw-mega-menu__tag">{{ component.tag }}</span> -->
                         </router-link>
@@ -26,6 +29,7 @@
             </nav>
             <nav class=" mw-mega-menu__list"
                  v-for="page in pagesStandards"
+                 :key="page.id"
                  v-if="type != 'components'">
                 <h1 class=" mw-mega-menu__title modul-u--h1 mw-u--highlighted-title-link">
                     <router-link :to="{ name : page.id }"
@@ -75,13 +79,17 @@
                         <m-accordion class="mw-mobile-menu__elem"
                                      skin="plain"
                                      v-for="category in categoriesComponent"
+                                     :key="category.id"
                                      v-if="menuSection == 'components'">
                             <h2 class="mw-mobile-menu__title"
                                 slot="header">
                                 <!-- <router-link :to="getRouterIndex(category.id)"> --> <span>{{category.text}}</span><!-- </router-link>-->
                             </h2>
                             <ul>
-                                <li v-for="component in getCategoryComponents(category.id)">
+                                <li v-for="component in getCategoryComponents(category.id)"
+                                    :key="component.url"
+                                    click="closeMenu()"
+                                    @keyup.enter="closeMenu()">
                                     <router-link :to="getRouterIndex(component.url)"
                                                  class="mw-mobile-menu__link">
                                         <span class=" mw-mobile-menu__wrapper">

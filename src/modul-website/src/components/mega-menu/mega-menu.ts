@@ -20,10 +20,10 @@ type Category = {
 })
 export class MWMegaMenu extends ModulWebsite {
 
-    private categoriesComponent: Category[] = [];
-    private pagesStandards: Category[] = [];
-    private menuSection: string = '';
-    private menuLevelOne: boolean = true;
+    categoriesComponent: Category[] = [];
+    pagesStandards: Category[] = [];
+    menuSection: string = '';
+    menuLevelOne: boolean = true;
 
     @Prop()
     public type: string;
@@ -31,7 +31,7 @@ export class MWMegaMenu extends ModulWebsite {
     @Prop({ default: false })
     public open: boolean;
 
-    protected beforeMount(): void {
+    beforeMount(): void {
 
         Object.keys(this.$meta.componentState).forEach(category => {
             this.categoriesComponent.push({

@@ -67,6 +67,8 @@ export interface ModulRouter {
 
 // must match router.<lang>.json
 export const ROUTER_COMPONENTS: string = 'router:components';
+export const ROUTER_COMPONENTS_UI: string = 'router:components-ui';
+export const ROUTER_COMPONENTS_UTILS: string = 'router:components-utils';
 export const ROUTER_OVERVIEW: string = 'router:overview';
 export const ROUTER_CODE: string = 'router:code';
 export const ROUTER_PHILOSOPHY: string = 'router:philosophy';
@@ -105,6 +107,7 @@ const routerFactory: RouterFactoryFn = (meta: ModulMeta) => {
 
     let i18n: Messages = Vue.prototype.$i18n;
     let componentsRoute: string = i18n.translate(ROUTER_COMPONENTS);
+    let componentsUiRoute: string = i18n.translate(ROUTER_COMPONENTS_UI);
     let overviewRoute: string = i18n.translate(ROUTER_OVERVIEW);
     let CodeRoute: string = i18n.translate(ROUTER_CODE);
 
@@ -140,17 +143,36 @@ const routerFactory: RouterFactoryFn = (meta: ModulMeta) => {
         let categoryRoute: string = i18n.translate(`categories:${category}-route`);
         meta.componentState[category].forEach((components: ComponentMeta) => {
             let config: RouteConfig = pushRoute(components.url, modulRoutes, {
-                path: `/${componentsRoute}/${categoryRoute}/${components.url}`,
-                meta: { name: components.name },
+                path: `/${componentsRoute}/${componentsUiRoute}/${categoryRoute}/${components.url}`,
+                meta: {
+                    title: components.name
+                },
+                props: {
+                    component: components
+                },
                 component: MWComponentsPage
             });
             config.children = [];
-            pushRoute(ROUTER_OVERVIEW, config.children, {
+            pushRoute(ROUTER_OVERVIEW + components.url, config.children, {
+                name: ROUTER_OVERVIEW + components.url,
                 path: overviewRoute,
+                meta: {
+                    title: `${components.name} - ${i18n.translate('website:overview')}`
+                },
+                props: {
+                    component: components
+                },
                 component: MWComponentOverview
             });
-            pushRoute(ROUTER_CODE, config.children, {
+            pushRoute(ROUTER_CODE + components.url, config.children, {
+                name: ROUTER_CODE + components.url,
                 path: CodeRoute,
+                meta: {
+                    title: `${components.name} - ${i18n.translate('website:code')}`
+                },
+                props: {
+                    component: components
+                },
                 component: MWComponentCode
             });
             config.children.push({

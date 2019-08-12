@@ -5,6 +5,8 @@
     "type": "components",
     "beta": false,
     "visible": true,
+    "overview": "components/button/button.overview.fr.md",
+    "preview": "components/button/button.preview.fr.md",
     "components": [
         "m-button"
     ]
