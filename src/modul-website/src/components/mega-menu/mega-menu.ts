@@ -1,4 +1,5 @@
-import MetaAll from '@/meta/meta-all';
+// import MetaAll from '@/meta/meta-all';
+import { ComponentMeta } from '@/content/components.meta.loader';
 import { ROUTER_PHILOSOPHY, ROUTER_STANDARDS_ACCESSIBILITY, ROUTER_STANDARDS_DEVELOPMENT, ROUTER_STANDARDS_EDITORIAL, ROUTER_STANDARDS_UI } from '@/router';
 import IconButtonPlugin from '@ulaval/modul-components/dist/components/icon-button/icon-button';
 import { MediaQueries } from '@ulaval/modul-components/dist/mixins/media-queries/media-queries';
@@ -10,12 +11,6 @@ import WithRender from './mega-menu.html?style=./mega-menu.scss';
 
 type Category = {
     id: string;
-    text: string;
-};
-
-type Component = {
-    tag: string;
-    category: string;
     text: string;
 };
 
@@ -37,10 +32,11 @@ export class MWMegaMenu extends ModulWebsite {
     public open: boolean;
 
     protected beforeMount(): void {
-        MetaAll.getCategories().forEach(category => {
+
+        Object.keys(this.$meta.componentState).forEach(category => {
             this.categoriesComponent.push({
                 id: category,
-                text: this.$i18n.translate(category)
+                text: this.$i18n.translate(`categories:${category}`)
             });
         });
 
@@ -67,6 +63,12 @@ export class MWMegaMenu extends ModulWebsite {
 
     }
 
+    getCategoryComponents(category): ComponentMeta[] {
+        return this.$meta.componentState[category].sort((a, b) => {
+            return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0);
+        });
+    }
+
     getRouterIndex(tag: string): string {
         return this.$routerIndex.for(tag);
     }
@@ -90,11 +92,6 @@ export class MWMegaMenu extends ModulWebsite {
 
     showMenuLevelOne(): void {
         this.menuLevelOne = true;
-    }
-
-    calise() {
-        console.log('calise'); // calise???
-
     }
 
     @Watch('$route')
